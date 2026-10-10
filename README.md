@@ -1,4 +1,4 @@
-# Montagne: Improved Browsing
+# Improved Browsing for Montagne Parfums
 
 A Chrome extension for [montagneparfums.com](https://www.montagneparfums.com/fragrance) that makes the product list easier to browse:
 
@@ -7,6 +7,8 @@ A Chrome extension for [montagneparfums.com](https://www.montagneparfums.com/fra
 - **Search** by fragrance name or by what it's inspired by (for example, "xerjoff" or "vanilla").
 - **"Back in stock" tags** on items that were sold out the last time you visited and are now available.
 - **"New" tags** on products that weren't on the page the last time you visited.
+
+![alt text](image.png)
 
 ## Installation
 
