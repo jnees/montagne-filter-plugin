@@ -1,4 +1,4 @@
-# Montagne: Hide Sold Out
+# Montagne: Improved Browsing
 
 A Chrome extension for [montagneparfums.com](https://www.montagneparfums.com/fragrance) that makes the product list easier to browse:
 
