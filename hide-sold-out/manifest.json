@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Montagne: Hide Sold Out",
+  "version": "1.3.0",
+  "description": "Hide sold-out items, search, and spot new or restocked fragrances on montagneparfums.com.",
+  "permissions": ["storage"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_title": "Toggle sold-out items" },
+  "content_scripts": [
+    {
+      "matches": ["*://*.montagneparfums.com/*", "*://montagneparfums.com/*"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_start"
+    }
+  ]
+}
