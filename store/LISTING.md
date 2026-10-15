@@ -20,7 +20,7 @@ Hide sold-out items, search, sort, and spot new or restocked fragrances on monta
 **Description:**
 
 ```
-Most of the Montagne Parfums catalog is often sold out, and the store has no way to hide those items. This extension adds a small control panel to the product list on montagneparfums.com so you can browse only what you can actually buy.
+A fan-made tool for browsing the Montagne Parfums catalog. It adds a small control panel to the product list on montagneparfums.com, so you can quickly find what's available, search by name or inspiration, and catch new releases and restocks.
 
 FEATURES
 • Stock filter: show only in-stock items, only sold-out items, or everything. The grid closes up so there are no gaps.
