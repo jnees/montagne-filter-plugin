@@ -18,6 +18,19 @@ html.mhso-filtering .ProductList-grid::after {
   display: none !important;
 }
 
+/* Product images the extension had to reload (see fixImages in content.js).
+   The site's inline sizing for these was measured while hidden, so override
+   it and fill the card like the site's own "fill" mode does. */
+.ProductList-innerImageWrapper img.mhso-img {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  object-fit: cover;
+}
+
 /* New / back-in-stock tags on product images */
 .ProductList-outerImageWrapper {
   position: relative;

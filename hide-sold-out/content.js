@@ -199,34 +199,38 @@ function buildPanel() {
   document.body.appendChild(panel);
 }
 
-// Squarespace lazy-loads product images and skips items that were hidden at
-// page load, leaving them at opacity 0 (no `.loaded` class) once revealed.
-// Load those ourselves, sized like the site's own loader would.
+// Squarespace sizes each product image with inline styles measured from its
+// card. Cards that were hidden at that moment measure 0x0, so once revealed
+// the image is missing (never loaded) or loaded at zero size. Repair any
+// revealed image that isn't showing: load it at a sensible resolution and
+// make it fill its card via the `mhso-img` class.
 const IMAGE_WIDTHS = [100, 300, 500, 750, 1000, 1500, 2500];
 
-function loadImages(item) {
-  for (const img of item.querySelectorAll("img.ProductList-image:not(.loaded)")) {
-    if (!img.getAttribute("src")) {
-      const url = img.dataset.src || img.dataset.image;
-      if (!url) continue;
-      const needed = (img.parentElement.offsetWidth || 500) * (window.devicePixelRatio || 1);
-      const width = IMAGE_WIDTHS.find((w) => w >= needed) || 2500;
-      img.src = `${url}?format=${width}w`;
-    }
-    if (img.complete && img.naturalWidth) {
-      img.classList.add("loaded");
-    } else {
-      img.addEventListener("load", () => img.classList.add("loaded"), { once: true });
-    }
+function fixImages(item) {
+  for (const img of item.querySelectorAll("img.ProductList-image")) {
+    const box = img.parentElement;
+    if (!box.offsetWidth) continue; // still hidden
+    const showing =
+      img.classList.contains("loaded") && img.offsetWidth > 0 && img.offsetHeight > 0;
+    if (showing || img.classList.contains("mhso-img")) continue;
+
+    const url = img.dataset.src || img.dataset.image;
+    if (!url) continue;
+    const needed = box.offsetWidth * (window.devicePixelRatio || 1);
+    const width = IMAGE_WIDTHS.find((w) => w >= needed) || 2500;
+    img.classList.add("mhso-img");
+    img.classList.remove("loaded");
+    img.addEventListener("load", () => img.classList.add("loaded"), { once: true });
+    img.src = `${url}?format=${width}w`;
   }
 }
 
-// Hidden items never intersect, so revealing one fires this as it scrolls into
-// view. The short delay lets the site's own loader go first.
+// Fires when a card scrolls into view or is revealed by a filter. The short
+// delay lets the site's own loader go first.
 const imageObserver = new IntersectionObserver(
   (entries) => {
     for (const entry of entries) {
-      if (entry.isIntersecting) setTimeout(() => loadImages(entry.target), 300);
+      if (entry.isIntersecting) setTimeout(() => fixImages(entry.target), 300);
     }
   },
   { rootMargin: "300px" }
@@ -243,6 +247,12 @@ function render() {
   );
   if (!panel) return;
   applySort(items);
+  // Re-observing makes the observer report each card's current visibility,
+  // so cards revealed by this render get their images checked.
+  for (const item of items) {
+    imageObserver.unobserve(item);
+    imageObserver.observe(item);
+  }
   panel.querySelector(".mhso-sort").value = sort;
 
   let shown = 0;
@@ -281,10 +291,7 @@ function render() {
 async function init() {
   const items = [...document.querySelectorAll(ITEM)].filter((i) => !i.mhsoTracked);
   if (!items.length) return;
-  items.forEach((i) => {
-    i.mhsoTracked = true;
-    imageObserver.observe(i);
-  });
+  items.forEach((i) => (i.mhsoTracked = true));
   if (!panel) buildPanel();
   render();
   await trackItems(items);
