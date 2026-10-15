@@ -1,11 +1,25 @@
 {
   "manifest_version": 3,
-  "name": "Montagne: Hide Sold Out",
-  "version": "1.3.1",
-  "description": "Hide sold-out items, search, and spot new or restocked fragrances on montagneparfums.com.",
+  "name": "Improved Browsing for Montagne Parfums",
+  "short_name": "Montagne Browsing",
+  "version": "1.0.0",
+  "description": "Hide sold-out items, search, sort, and spot new or restocked fragrances on montagneparfums.com. Unofficial.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
   "permissions": ["storage"],
   "background": { "service_worker": "background.js" },
-  "action": { "default_title": "Toggle sold-out items" },
+  "action": {
+    "default_title": "Switch between in-stock and all items",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png"
+    }
+  },
   "content_scripts": [
     {
       "matches": ["*://*.montagneparfums.com/*", "*://montagneparfums.com/*"],

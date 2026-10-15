@@ -12,7 +12,7 @@ A Chrome extension for [montagneparfums.com](https://www.montagneparfums.com/fra
 
 ## Installation
 
-The extension isn't in the Chrome Web Store, so you load it from this folder.
+Once the extension is published on the Chrome Web Store, install it from there. Until then, or to run your own copy, load it from this folder.
 
 1. Download or copy this `hide-sold-out` folder to your computer. Keep it somewhere permanent, because Chrome loads the extension from this folder each time it starts.
 2. Open Chrome and go to `chrome://extensions`.
@@ -55,3 +55,13 @@ Go to `chrome://extensions` and click **Remove** on the extension's card. This a
 
 - **The panel doesn't appear:** make sure you're on a page that lists products, such as `/fragrance`, and refresh the page after installing or reloading the extension.
 - **The extension stops working after the site changes:** it relies on how the site's pages are built. If the site is redesigned, the extension may need updating.
+
+## Publishing
+
+1. Bump `version` in [hide-sold-out/manifest.json](hide-sold-out/manifest.json). Every upload to the Chrome Web Store needs a higher version.
+2. Run `./scripts/package.sh`. It checks the files and builds `dist/montagne-browsing-<version>.zip`.
+3. Upload the zip in the [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole).
+
+Listing text, permission justifications and privacy answers are in [store/LISTING.md](store/LISTING.md). The privacy policy is [PRIVACY.md](PRIVACY.md). To redraw the icons, edit and run `python3 scripts/make_icons.py`.
+
+This project is not affiliated with Montagne Parfums.
