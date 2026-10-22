@@ -39,9 +39,9 @@
     "name": "LE BONBON INSPIRED BY MFK BACCARAT ROUGE 540",
     "url": "https://www.montagneparfums.com/fragrance/le-bonbon-1",
     "price": 40.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-22T04:36:06Z",
+    "lastChange": "2026-10-22T06:49:21Z",
     "removed": false
   },
   "5d156a9ca50704000135822a": {
@@ -948,9 +948,9 @@
     "name": "IMAGINARY INSPIRED BY LOUIS VUITTON IMAGINATION",
     "url": "https://www.montagneparfums.com/fragrance/imaginary-inspired-by-louis-vuitton-imagination",
     "price": 50.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-22T05:33:35Z",
+    "lastChange": "2026-10-22T06:49:21Z",
     "removed": false
   },
   "64cd586e825b0778a4f12a03": {
