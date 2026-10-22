@@ -1,0 +1,49 @@
+name: Watch Friday restock
+
+# The weekly restock lands at 5:00 PM New York time. This job starts
+# early to absorb GitHub's scheduling delays, waits for 4:55 PM, checks every
+# minute until 5:10 PM, then every 3 minutes until 5:50 PM.
+#
+# GitHub cron is UTC and ignores daylight saving, so it runs twice; the crawler
+# checks New York time and only the run that lands shortly before the window
+# watches (20:30 UTC in summer, 21:30 UTC in winter). In winter the 20:30 run
+# is too early and exits. In summer the 21:30 run (5:30 PM) waits behind the
+# watching run via the shared concurrency group, then finds the window over
+# and exits; if the 20:30 run never started, it covers 5:30-5:50 PM instead.
+
+on:
+  schedule:
+    - cron: "30 20 * * 5"
+    - cron: "30 21 * * 5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Shared with crawl.yml so the two never commit at the same time.
+concurrency:
+  group: track-stock
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Watch the restock window
+        run: python3 scripts/crawl.py --watch
+
+      - name: Commit changes
+        run: |
+          git add data
+          if git diff --cached --quiet; then
+            echo "No changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Friday restock $(date -u +%Y-%m-%d)"
+          git pull --rebase
+          git push

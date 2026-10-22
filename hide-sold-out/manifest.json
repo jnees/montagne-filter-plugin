@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Improved Browsing for Montagne Parfums",
-  "short_name": "Montagne Browsing",
+  "name": "Monty Filters: Improved Browsing for Montagne Parfums",
+  "short_name": "Monty Filters",
   "version": "1.0.0",
   "description": "Hide sold-out items, search, sort, and spot new or restocked fragrances on montagneparfums.com. Unofficial.",
   "icons": {

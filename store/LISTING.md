@@ -2,13 +2,13 @@
 
 Everything to paste into the [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole), section by section.
 
-Upload: `dist/montagne-browsing-<version>.zip` (build it with `./scripts/package.sh`).
+Upload: `dist/monty-filters-<version>.zip` (build it with `./scripts/package.sh`).
 
 ---
 
 ## Store listing tab
 
-**Name** (from the manifest): Improved Browsing for Montagne Parfums
+**Name** (from the manifest): Monty Filters: Improved Browsing for Montagne Parfums
 
 **Summary** (from the manifest, max 132 characters):
 Hide sold-out items, search, sort, and spot new or restocked fragrances on montagneparfums.com. Unofficial.

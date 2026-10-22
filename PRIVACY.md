@@ -1,7 +1,7 @@
 # Privacy Policy
 
-**Improved Browsing for Montagne Parfums** (the "extension")
-Last updated: October 14, 2026
+**Monty Filters: Improved Browsing for Montagne Parfums** (the "extension")
+Last updated: October 15, 2026
 
 ## Summary
 

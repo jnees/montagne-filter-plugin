@@ -1,4 +1,4 @@
-# Improved Browsing for Montagne Parfums
+# Monty Filters: Improved Browsing for Montagne Parfums
 
 A Chrome extension for [montagneparfums.com](https://www.montagneparfums.com/fragrance) that makes the product list easier to browse:
 
@@ -56,10 +56,24 @@ Go to `chrome://extensions` and click **Remove** on the extension's card. This a
 - **The panel doesn't appear:** make sure you're on a page that lists products, such as `/fragrance`, and refresh the page after installing or reloading the extension.
 - **The extension stops working after the site changes:** it relies on how the site's pages are built. If the site is redesigned, the extension may need updating.
 
+## Stock history
+
+Two scheduled GitHub Actions workflows run [scripts/crawl.py](scripts/crawl.py) against the public `/fragrance` page and commit any changes:
+
+- [crawl.yml](.github/workflows/crawl.yml) checks once an hour.
+- [friday-watch.yml](.github/workflows/friday-watch.yml) follows the weekly Friday restock (5:00 PM New York time). It checks every minute from 4:55 to 5:10 PM, then every 3 minutes until 5:50 PM, so the log shows how quickly restocked items sell out.
+
+The data lives in two files:
+
+- [data/products.json](data/products.json): the current state of every product seen so far: name, link, price, sold out or not, when it was first seen, and when it last changed.
+- [data/events.csv](data/events.csv): one row per change (`new`, `sold_out`, `restocked`, `price_change`, `removed`, `returned`), with a UTC timestamp. Opens in any spreadsheet app.
+
+The crawler reads only the normal product page, which the site's robots.txt allows; it doesn't use the JSON feed, which robots.txt asks crawlers to avoid. It identifies itself as `MontyFiltersBot` and makes one request per hourly run, and about 30 during the Friday window. To run it by hand, use **Actions → Track stock → Run workflow** on GitHub, or `python3 scripts/crawl.py` locally.
+
 ## Publishing
 
 1. Bump `version` in [hide-sold-out/manifest.json](hide-sold-out/manifest.json). Every upload to the Chrome Web Store needs a higher version.
-2. Run `./scripts/package.sh`. It checks the files and builds `dist/montagne-browsing-<version>.zip`.
+2. Run `./scripts/package.sh`. It checks the files and builds `dist/monty-filters-<version>.zip`.
 3. Upload the zip in the [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole).
 
 Listing text, permission justifications and privacy answers are in [store/LISTING.md](store/LISTING.md). The privacy policy is [PRIVACY.md](PRIVACY.md). To redraw the icons, edit and run `python3 scripts/make_icons.py`.
