@@ -876,9 +876,9 @@
     "name": "EAU VANILLE INSPIRED BY LE LABO 44 VANILLE PARIS CITY",
     "url": "https://www.montagneparfums.com/fragrance/eau-vanille",
     "price": 40.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-22T03:44:51Z",
+    "lastChange": "2026-10-23T02:41:29Z",
     "removed": false
   },
   "6442f21e066bc57db583155c": {
