@@ -60,6 +60,30 @@ html.mhso-filtering .ProductList-grid::after {
 .mhso-tag--restocked { background: #1f7a4d; }
 .mhso-tag--new { background: #2b59c3; }
 
+/* History caption under each product's price */
+.mhso-caption {
+  margin-top: 4px;
+  color: #666;
+  font: 12px/1.3 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+/* Units left, under the price on product pages */
+.mhso-stock-count {
+  display: inline-block;
+  margin: 8px 0;
+  padding: 4px 10px;
+  border-radius: 3px;
+  background: #1f7a4d;
+  color: #fff;
+  font: 600 13px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.mhso-stock-count--low { background: #b35c00; }
+
 /* Control panel */
 #mhso-panel {
   position: fixed;
@@ -160,6 +184,8 @@ html.mhso-filtering .ProductList-grid::after {
 #mhso-panel .mhso-chip[aria-pressed="true"] { background: #222; color: #fff; }
 #mhso-panel .mhso-chip[data-filter="restocked"] { border-color: #1f7a4d; color: #1f7a4d; }
 #mhso-panel .mhso-chip[data-filter="restocked"][aria-pressed="true"] { background: #1f7a4d; color: #fff; }
+#mhso-panel .mhso-chip[data-filter="sellout"] { border-color: #b3261e; color: #b3261e; }
+#mhso-panel .mhso-chip[data-filter="sellout"][aria-pressed="true"] { background: #b3261e; color: #fff; }
 #mhso-panel .mhso-chip[data-filter="new"] { border-color: #2b59c3; color: #2b59c3; }
 #mhso-panel .mhso-chip[data-filter="new"][aria-pressed="true"] { background: #2b59c3; color: #fff; }
 
@@ -167,4 +193,17 @@ html.mhso-filtering .ProductList-grid::after {
   margin-top: 8px;
   color: #666;
   font-size: 12px;
+}
+
+#mhso-panel .mhso-meta {
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid #eee;
+  color: #666;
+  font-size: 12px;
+}
+
+#mhso-panel .mhso-meta:empty,
+#mhso-panel .mhso-source:empty {
+  display: none;
 }

@@ -1,8 +1,11 @@
 // Adds a control panel to Montagne product lists: filter by stock, search by
-// name, sort, and tag items that are new or restocked since earlier visits.
+// name, sort, and tag items that are new, recently restocked or recently sold
+// out. Tags and history
+// captions come from the shared crawler history (history.js) when available,
+// combined with this browser's own tracking, which also works offline.
 const STOCK_KEY = "stockFilter"; // "in" | "out" | "all"
 const LEGACY_HIDE_KEY = "hideSoldOut";
-const SORT_KEY = "sortOrder"; // "default" | "name" | "inspiration" | "price"
+const SORT_KEY = "sortOrder"; // "default" | "name" | "inspiration" | "price" | "restocked" | "soldout"
 const SEEN_KEY = "seenItems";
 const TAG_WINDOW_MS = 7 * 24 * 60 * 60 * 1000;
 
@@ -12,8 +15,32 @@ const ITEM = ".ProductList-item[data-item-id]";
 let stock = "in";
 let sort = "default";
 let query = "";
-let tagFilter = null; // null | "new" | "restocked"
+let tagFilter = null; // null | "new" | "restocked" | "sellout"
+// While the "Recent restock" or "Recent sellout" chip is on, it picks the stock
+// view and sort that suit it (sold-out items, latest sell-outs first, for
+// example). These replace the saved choices without overwriting them, and the
+// user can still change either for as long as the chip stays on.
+let stockOverride = null;
+let sortOverride = null;
+const TAG_VIEWS = {
+  restocked: { stock: "in", sort: "restocked" },
+  sellout: { stock: "out", sort: "soldout" },
+};
+const TAG_LABELS = { restocked: "Recent restock", sellout: "Recent sellout", new: "New" };
+
+function activeStock() {
+  return stockOverride || stock;
+}
+
+function activeSort() {
+  const choice = sortOverride || sort;
+  // A saved sort from an older version may no longer exist.
+  return choice in COMPARATORS ? choice : "default";
+}
 let panel;
+let localStatus = {}; // id -> { isNew, restockedAt, soldOutAt } from this browser's tracking
+let shared = null; // result of loadHistory(), once loaded
+let historyRequest = null;
 
 // Default to in-stock only; applied at document_start so hidden items never
 // flash. Falls back to the older on/off setting if that's all that's stored.
@@ -34,15 +61,16 @@ chrome.storage.onChanged.addListener((changes) => {
 
 function isHiddenByStock(item) {
   const soldOut = item.classList.contains("sold-out");
-  return (stock === "in" && soldOut) || (stock === "out" && !soldOut);
+  const view = activeStock();
+  return (view === "in" && soldOut) || (view === "out" && !soldOut);
 }
 
 function normalize(text) {
   return text.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 }
 
-// Records each item's stock state and tags items that are new or restocked
-// since the last snapshot. Tags stay visible for TAG_WINDOW_MS.
+// Records each item's stock state in this browser and notes items that are
+// new or restocked since earlier visits (within TAG_WINDOW_MS).
 async function trackItems(items) {
   const stored = await chrome.storage.local.get(SEEN_KEY);
   const firstRun = !stored[SEEN_KEY];
@@ -58,16 +86,17 @@ async function trackItems(items) {
       rec = seen[id] = { soldOut, firstSeen: firstRun ? 0 : now };
     } else {
       if (rec.soldOut && !soldOut) rec.restockedAt = now;
+      if (!rec.soldOut && soldOut) rec.soldOutAt = now;
       if (soldOut) delete rec.restockedAt;
+      if (!soldOut) delete rec.soldOutAt;
       rec.soldOut = soldOut;
     }
 
-    if (rec.firstSeen && now - rec.firstSeen < TAG_WINDOW_MS) {
-      addTag(item, "new", "New");
-    }
-    if (!soldOut && rec.restockedAt && now - rec.restockedAt < TAG_WINDOW_MS) {
-      addTag(item, "restocked", "Back in stock");
-    }
+    localStatus[id] = {
+      isNew: !!rec.firstSeen && now - rec.firstSeen < TAG_WINDOW_MS,
+      restockedAt: !soldOut && rec.restockedAt ? rec.restockedAt : null,
+      soldOutAt: soldOut && rec.soldOutAt ? rec.soldOutAt : null,
+    };
   }
 
   await chrome.storage.local.set({ [SEEN_KEY]: seen });
@@ -101,12 +130,17 @@ const COMPARATORS = {
   inspiration: (a, b) =>
     !a.inspiration - !b.inspiration || collator.compare(a.inspiration, b.inspiration),
   price: (a, b) => a.price - b.price,
+  // Most recent restock first; never-restocked items keep default order last.
+  restocked: (a, b) => (b.restockedAt || 0) - (a.restockedAt || 0),
+  // Currently sold-out items, most recent sell-out first. Items sold out since
+  // before tracking began follow, then in-stock items (default order).
+  soldout: (a, b) => (b.soldOutRank || 0) - (a.soldOutRank || 0),
 };
 
 // Reorders visually via flex `order`, leaving the site's DOM untouched.
 // Ties keep the site's default order because Array#sort is stable.
 function applySort(items) {
-  const compare = COMPARATORS[sort];
+  const compare = COMPARATORS[activeSort()];
   if (!compare) {
     for (const item of items) item.style.removeProperty("order");
     return;
@@ -116,7 +150,100 @@ function applySort(items) {
     .forEach((item, i) => item.style.setProperty("order", String(i)));
 }
 
-function addTag(item, kind, label) {
+// Decides each card's tags, caption and sort times.
+//
+// With the shared history loaded, it is the only source: the crawler checks
+// hourly, while this browser only notices changes when the user visits, and
+// records them at that moment. (A restock that happened before tracking began
+// would otherwise look brand new on the user's next visit.) A product with no
+// shared events hasn't changed since tracking began.
+//
+// The page itself is newer than the shared file, so a mismatch between the two
+// means the item changed since the file was published; this browser's record
+// then supplies the time, if it noticed the change after the last shared event.
+//
+// Without the shared history (offline, GitHub down), this browser's record is
+// used on its own, as in earlier versions.
+function itemStatus(item) {
+  const id = item.dataset.itemId;
+  const soldOut = item.classList.contains("sold-out");
+  const now = Date.now();
+  const local = localStatus[id] || {};
+  const status = { isNew: false, restockedAt: null, soldOutAt: null, caption: "", title: "" };
+  if (!shared) {
+    Object.assign(status, {
+      isNew: !!local.isNew,
+      restockedAt: local.restockedAt,
+      soldOutAt: local.soldOutAt,
+    });
+    return finishStatus(status, soldOut, now);
+  }
+  const h = shared.byId[id];
+  if (!h) return finishStatus(status, soldOut, now);
+  const lastSharedEvent = Math.max(h.lastRestocked || 0, h.lastSoldOut || 0, h.firstSeen || 0);
+  const noticedSince = (time) => (time && time > lastSharedEvent ? time : now);
+
+  if (h.firstSeen && now - h.firstSeen < TAG_WINDOW_MS) status.isNew = true;
+  if (!soldOut) {
+    if (h.state === "out") {
+      status.restockedAt = noticedSince(local.restockedAt);
+      status.caption = "Restocked today";
+      status.title = "Back in stock since the last shared update";
+    } else if (h.lastRestocked) {
+      status.restockedAt = h.lastRestocked;
+      status.caption = describeRestock(h);
+      status.title = `First seen back in stock: ${fullFormat.format(h.lastRestocked)}`;
+    }
+  } else if (h.state === "in" && h.lastRestocked) {
+    status.soldOutAt = noticedSince(local.soldOutAt);
+    status.caption = `Sold out today · lasted ${describeRun(now - h.lastRestocked, false)}`;
+    status.title = "Sold out since the last shared update";
+  } else if (h.lastSoldOut) {
+    status.soldOutAt = h.lastSoldOut;
+    status.caption = `Sold out ${formatDay(h.lastSoldOut)}`;
+    status.title = `First seen sold out: ${fullFormat.format(h.lastSoldOut)}`;
+    if (h.lastRunMs != null) {
+      status.caption += ` · last restock lasted ${describeRun(h.lastRunMs, h.lastRunPrecise)}`;
+    }
+  }
+  if (h.restocks > 1) status.title += ` (restocked ${h.restocks} times since tracking began)`;
+  return finishStatus(status, soldOut, now);
+}
+
+function finishStatus(status, soldOut, now) {
+  status.isRestocked =
+    !soldOut && !!status.restockedAt && now - status.restockedAt < TAG_WINDOW_MS;
+  status.isSoldRecent =
+    soldOut && !!status.soldOutAt && now - status.soldOutAt < TAG_WINDOW_MS;
+  return status;
+}
+
+// Replaces any earlier tags and captions on these cards with current ones.
+function decorate(items) {
+  for (const item of items) {
+    const status = itemStatus(item);
+    item.querySelectorAll(".mhso-tags, .mhso-caption").forEach((el) => el.remove());
+    item.classList.remove("mhso-new", "mhso-restocked");
+    // No image tag for sell-outs: the site already badges sold-out items.
+    item.classList.toggle("mhso-sellout", status.isSoldRecent);
+    if (status.isRestocked) addTag(item, "restocked", "Recent restock", status.title);
+    if (status.isNew) addTag(item, "new", "New");
+    if (status.caption) {
+      const caption = document.createElement("div");
+      caption.className = "mhso-caption";
+      caption.textContent = status.caption;
+      if (status.title) caption.title = status.title;
+      const meta = item.querySelector(".ProductList-meta") || item;
+      meta.appendChild(caption);
+    }
+    const info = itemInfo(item);
+    info.restockedAt = status.restockedAt || 0;
+    // 0 = in stock; 1 = sold out, time unknown; otherwise the sell-out time.
+    info.soldOutRank = item.classList.contains("sold-out") ? status.soldOutAt || 1 : 0;
+  }
+}
+
+function addTag(item, kind, label, title = "") {
   item.classList.add(`mhso-${kind}`);
   const figure = item.querySelector(".ProductList-outerImageWrapper") || item;
   let tags = figure.querySelector(".mhso-tags");
@@ -128,6 +255,7 @@ function addTag(item, kind, label) {
   const tag = document.createElement("span");
   tag.className = `mhso-tag mhso-tag--${kind}`;
   tag.textContent = label;
+  if (title) tag.title = title;
   tags.appendChild(tag);
 }
 
@@ -148,13 +276,20 @@ function buildPanel() {
         <option value="name">Name A–Z</option>
         <option value="inspiration">Inspiration A–Z</option>
         <option value="price">Price: low to high</option>
+        <option value="restocked">Recently restocked</option>
+        <option value="soldout">Recently sold out</option>
       </select>
     </label>
     <div class="mhso-row">
       <button type="button" class="mhso-chip" data-filter="restocked"></button>
+      <button type="button" class="mhso-chip" data-filter="sellout"></button>
       <button type="button" class="mhso-chip" data-filter="new"></button>
     </div>
     <div class="mhso-status" aria-live="polite"></div>
+    <div class="mhso-meta">
+      <div class="mhso-drop"></div>
+      <div class="mhso-source"></div>
+    </div>
   `;
 
   const search = panel.querySelector(".mhso-search");
@@ -174,17 +309,30 @@ function buildPanel() {
   panel.querySelectorAll("[data-filter]").forEach((chip) => {
     chip.addEventListener("click", () => {
       tagFilter = tagFilter === chip.dataset.filter ? null : chip.dataset.filter;
+      const view = TAG_VIEWS[tagFilter] || {};
+      stockOverride = view.stock || null;
+      sortOverride = view.sort || null;
       render();
     });
   });
 
   panel.querySelector(".mhso-sort").addEventListener("change", (e) => {
-    chrome.storage.local.set({ [SORT_KEY]: e.target.value });
+    if (tagFilter) {
+      sortOverride = e.target.value; // temporary, for as long as the chip is on
+      render();
+    } else {
+      chrome.storage.local.set({ [SORT_KEY]: e.target.value });
+    }
   });
 
   panel.querySelectorAll("[data-stock]").forEach((button) => {
     button.addEventListener("click", () => {
-      chrome.storage.local.set({ [STOCK_KEY]: button.dataset.stock });
+      if (tagFilter) {
+        stockOverride = button.dataset.stock; // temporary, for as long as the chip is on
+        render();
+      } else {
+        chrome.storage.local.set({ [STOCK_KEY]: button.dataset.stock });
+      }
     });
   });
 
@@ -237,13 +385,13 @@ const imageObserver = new IntersectionObserver(
 );
 
 function render() {
-  root.classList.toggle("mhso-stock-in", stock === "in");
-  root.classList.toggle("mhso-stock-out", stock === "out");
+  root.classList.toggle("mhso-stock-in", activeStock() === "in");
+  root.classList.toggle("mhso-stock-out", activeStock() === "out");
   const items = [...document.querySelectorAll(ITEM)];
   // Flex layout is what makes gap-free filtering and `order` sorting work.
   root.classList.toggle(
     "mhso-filtering",
-    stock !== "all" || !!query || !!tagFilter || sort !== "default"
+    activeStock() !== "all" || !!query || !!tagFilter || activeSort() !== "default"
   );
   if (!panel) return;
   applySort(items);
@@ -253,7 +401,7 @@ function render() {
     imageObserver.unobserve(item);
     imageObserver.observe(item);
   }
-  panel.querySelector(".mhso-sort").value = sort;
+  panel.querySelector(".mhso-sort").value = activeSort();
 
   let shown = 0;
   for (const item of items) {
@@ -273,32 +421,134 @@ function render() {
   };
   for (const button of panel.querySelectorAll("[data-stock]")) {
     button.textContent = stockLabels[button.dataset.stock];
-    button.setAttribute("aria-pressed", String(stock === button.dataset.stock));
+    button.setAttribute("aria-pressed", String(activeStock() === button.dataset.stock));
   }
 
   for (const chip of panel.querySelectorAll("[data-filter]")) {
     const kind = chip.dataset.filter;
     const count = items.filter((i) => i.classList.contains(`mhso-${kind}`)).length;
     chip.hidden = count === 0;
-    chip.textContent = `${kind === "new" ? "New" : "Back in stock"} (${count})`;
+    chip.textContent = `${TAG_LABELS[kind]} (${count})`;
     chip.setAttribute("aria-pressed", String(tagFilter === kind));
   }
 
   panel.querySelector(".mhso-status").textContent =
     `Showing ${shown} of ${items.length}`;
+  renderMeta();
+}
+
+function renderMeta() {
+  if (!panel) return;
+  const drop = nextDrop();
+  panel.querySelector(".mhso-drop").textContent = drop.live
+    ? "Friday drop is happening now (5:00 PM ET)"
+    : `Next drop: Fri 5:00 PM ET · in ${formatCountdown(drop.minutes)}`;
+
+  const source = panel.querySelector(".mhso-source");
+  if (shared) {
+    source.textContent =
+      `Restock history since ${monthDayFormat.format(TRACKING_SINCE)}` +
+      (shared.stale ? " (offline copy)" : "");
+    source.title = `Shared history, fetched ${fullFormat.format(shared.fetchedAt)}`;
+  } else {
+    source.textContent = historyRequest ? "Loading restock history…" : "";
+    source.title = "";
+  }
 }
 
 async function init() {
   const items = [...document.querySelectorAll(ITEM)].filter((i) => !i.mhsoTracked);
   if (!items.length) return;
   items.forEach((i) => (i.mhsoTracked = true));
-  if (!panel) buildPanel();
+  if (!panel) {
+    buildPanel();
+    setInterval(renderMeta, 60 * 1000); // keep the drop countdown current
+  }
   render();
   await trackItems(items);
+  decorate(items);
   render();
+
+  if (!historyRequest) {
+    historyRequest = loadHistory().then((result) => {
+      shared = result;
+      if (!result) historyRequest = null; // allows a retry on the next init
+      decorate([...document.querySelectorAll(ITEM)]);
+      render();
+    });
+  }
+}
+
+// Product pages: Squarespace embeds each variant's inventory in the page's
+// own context script ("stock": {"quantity": N}). Read it from the already
+// loaded page (no requests) and show it under the price. The count is as of
+// page load, and only shown while some is left.
+function productVariants() {
+  const script = [...document.scripts].find((s) => s.textContent.includes("SQUARESPACE_CONTEXT"));
+  if (!script) return null;
+  const text = script.textContent;
+  const key = '"product":{';
+  for (let at = text.indexOf(key); at !== -1; at = text.indexOf(key, at + 1)) {
+    const open = at + key.length - 1;
+    const close = matchingBrace(text, open);
+    if (close === -1) return null;
+    try {
+      const product = JSON.parse(text.slice(open, close + 1));
+      if (Array.isArray(product.variants)) return product.variants;
+    } catch {
+      // not the product object; keep looking
+    }
+  }
+  return null;
+}
+
+// Index of the "}" closing the object that opens at text[open], skipping strings.
+function matchingBrace(text, open) {
+  let depth = 0;
+  let inString = false;
+  for (let i = open; i < text.length; i++) {
+    const c = text[i];
+    if (inString) {
+      if (c === "\\") i++;
+      else if (c === '"') inString = false;
+    } else if (c === '"') {
+      inString = true;
+    } else if (c === "{") {
+      depth++;
+    } else if (c === "}" && --depth === 0) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+function showStockCount() {
+  const prices = document.querySelectorAll(".ProductItem-details .product-price");
+  if (!prices.length) return;
+  const variants = productVariants();
+  if (!variants || variants.some((v) => !v.stock || v.stock.unlimited)) return;
+  const inStock = variants.filter((v) => v.stock.quantity > 0);
+  if (!inStock.length) return; // the site already shows "Sold out"
+
+  const label = (v) => Object.values(v.attributes || {}).join(" ");
+  const text =
+    variants.length === 1
+      ? `${variants[0].stock.quantity} left`
+      : variants.map((v) => `${label(v) || "Option"}: ${v.stock.quantity} left`).join(" · ");
+  const low = inStock.every((v) => v.stock.quantity <= 5);
+
+  for (const price of prices) {
+    if (price.parentElement.querySelector(".mhso-stock-count")) continue;
+    const badge = document.createElement("div");
+    badge.className = "mhso-stock-count" + (low ? " mhso-stock-count--low" : "");
+    badge.textContent = text;
+    badge.title = "Inventory when this page loaded. Refresh for the latest count.";
+    price.insertAdjacentElement("afterend", badge);
+  }
 }
 
 function start() {
+  showStockCount();
   init();
   // Re-run if the site swaps in a new product list without a full page load.
   let pending;

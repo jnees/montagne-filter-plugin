@@ -3,10 +3,12 @@
 A Chrome extension for [montagneparfums.com](https://www.montagneparfums.com/fragrance) that makes the product list easier to browse:
 
 - **Filter by stock:** show only in-stock items, only sold-out items, or everything. The remaining products close up so there are no gaps in the grid.
-- **Sort** by name, by the fragrance each one is inspired by, or by price.
+- **Sort** by name, by the fragrance each one is inspired by, by price, or by what was most recently restocked or sold out.
 - **Search** by fragrance name or by what it's inspired by (for example, "xerjoff" or "vanilla").
-- **"Back in stock" tags** on items that were sold out the last time you visited and are now available.
-- **"New" tags** on products that weren't on the page the last time you visited.
+- **Restock history** under each product, such as "Restocked in the Oct 23 drop" or "Sold out Oct 23 · last restock lasted about 3 min".
+- **"Recent restock" and "New" tags** on products restocked or added in the last 7 days, and a **Recent sellout** filter for what sold out in the last 7 days.
+- **A countdown** to the weekly Friday restock (5:00 PM New York time).
+- **Units left** on each product's page, such as "19 left", read from the page itself.
 
 ![alt text](image.png)
 
@@ -29,19 +31,23 @@ This also works in other Chromium-based browsers such as Edge, Brave and Arc. Th
 | Control | What it does |
 | --- | --- |
 | **In stock / Sold out / All** | Shows only in-stock items, only sold-out items, or everything. Clicking the extension's toolbar icon switches between **In stock** and **All**. The icon's badge shows **IN** or **OUT** while one of those filters is on. |
-| **Sort** | Default (the site's order), Name A–Z, Inspiration A–Z, or Price: low to high. Sorting by inspiration groups products by fragrance house, since most inspirations start with the brand name. Montagne originals with no inspiration go last. |
+| **Sort** | Default (the site's order), Name A–Z, Inspiration A–Z, Price: low to high, Recently restocked, or Recently sold out. Sorting by inspiration groups products by fragrance house, since most inspirations start with the brand name; Montagne originals with no inspiration go last. "Recently sold out" lists sold-out items by when they sold out, newest first. |
 | **Search box** | Filters products as you type. If you type several words, only products matching all of them are shown. Press `/` to jump to the search box and `Esc` to clear it. |
-| **Back in stock (n)** | Shows only the items that have come back in stock. Click it again to show everything. |
-| **New (n)** | Shows only new items. Click it again to show everything. |
+| **Recent restock (n)** | Shows only items restocked in the last 7 days, most recent first. Click it again to show everything. |
+| **Recent sellout (n)** | Shows only items that sold out in the last 7 days, most recent first. Click it again to show everything. |
+| **New (n)** | Shows only items added in the last 7 days. Click it again to show everything. |
+| **Panel footer** | A countdown to the next Friday drop, and how far back the restock history goes. |
+| **Units left** (product pages) | Under the price, how many are left, for example "19 left" (orange at 5 or fewer). It's the count when the page loaded, so refresh for the latest. Not shown once something is sold out. |
 
-The extension remembers your stock and sort choices across every page of the site. It starts on **In stock**.
+The extension remembers your stock and sort choices across every page of the site. It starts on **In stock**. Turning on **Recent restock** or **Recent sellout** also switches the stock filter and sort to match (In stock + Recently restocked, or Sold out + Recently sold out), shown in the panel. You can change either while the chip is on; turning the chip off goes back to your usual settings.
 
-### About the "New" and "Back in stock" tags
+### About the restock history and tags
 
-- On your first visit the extension records what's on the page, so you won't see any tags yet. Tags show up on later visits when something has changed.
-- Each tag stays for 7 days.
-- The extension only knows about pages you've opened. If you only browse one category, it only tracks the items in that category.
-- All of this data is stored in your browser. Nothing is sent anywhere.
+- The history comes from this project's crawler (see [Stock history](#stock-history)), which checks the store every hour and every minute or so during the Friday drop. The extension downloads the public log, [data/events.csv](data/events.csv), from GitHub at most every 15 minutes and keeps a copy for when it's offline.
+- Times are when the crawler noticed a change, not necessarily when the store made it. That's within about a minute during the Friday drop and up to about an hour otherwise, so captions show dates rather than times, and durations timed by an hourly check are rounded ("about 3 hr", "under 2 hr"). Hover over a caption for the exact time it was first seen.
+- The page itself is always newer than the shared log. If they disagree, the extension trusts the page: "Restocked today" or "Sold out today" means it changed since the last shared update.
+- History starts on October 22, 2026, when tracking began. Items that sold out before then show no sell-out date.
+- The extension also keeps its own record of what you've seen in your browser, but only uses it when the shared history can't be loaded. That record only knows what changed between your visits, and dates each change to the visit where it noticed it.
 
 ## Updating
 
