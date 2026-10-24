@@ -19,7 +19,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+      # Check out the latest main, not the commit from when this run was
+      # queued; a run that waited behind another would otherwise start from
+      # stale data and conflict when pushing.
       - uses: actions/checkout@v7
+        with:
+          ref: main
 
       - name: Check the store
         run: python3 scripts/crawl.py
@@ -34,5 +39,12 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
           git commit -m "Stock update $(date -u +%Y-%m-%dT%H:%MZ)"
-          git pull --rebase
+          if ! git pull --rebase; then
+            # Never drop collected data: park it on its own branch instead.
+            git rebase --abort
+            branch="rescue/run-${GITHUB_RUN_ID}"
+            git push origin "HEAD:refs/heads/${branch}"
+            echo "::error::Data conflicted with main; saved to branch ${branch}"
+            exit 1
+          fi
           git push
