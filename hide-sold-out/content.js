@@ -479,69 +479,71 @@ async function init() {
   }
 }
 
-// Product pages: Squarespace embeds each variant's inventory in the page's
-// own context script ("stock": {"quantity": N}). Read it from the already
-// loaded page (no requests) and show it under the price. The count is as of
-// page load, and only shown while some is left.
-function productVariants() {
-  const script = [...document.scripts].find((s) => s.textContent.includes("SQUARESPACE_CONTEXT"));
-  if (!script) return null;
-  const text = script.textContent;
-  const key = '"product":{';
-  for (let at = text.indexOf(key); at !== -1; at = text.indexOf(key, at + 1)) {
-    const open = at + key.length - 1;
-    const close = matchingBrace(text, open);
-    if (close === -1) return null;
+// Product pages: show how many are left under the price, from the inventory
+// the store already has on the page. The store often switches pages without
+// reloading, so the count comes from its live product data via page-stock.js
+// (which runs in the page's own context) and is re-checked whenever the page
+// content changes. The count is as of page load, and only shown while some
+// is left.
+const STOCK_RETRIES = 10;
+const stockAttempts = {};
+
+// Asks page-stock.js for the variants of the product with this id. The two
+// events are dispatched synchronously, so the answer arrives before return.
+function requestStock(itemId) {
+  let answer = null;
+  const onAnswer = (event) => {
     try {
-      const product = JSON.parse(text.slice(open, close + 1));
-      if (Array.isArray(product.variants)) return product.variants;
+      answer = JSON.parse(event.detail);
     } catch {
-      // not the product object; keep looking
+      answer = null;
     }
-  }
-  return null;
+  };
+  document.addEventListener("mhso:stock", onAnswer);
+  document.dispatchEvent(new CustomEvent("mhso:get-stock", { detail: itemId }));
+  document.removeEventListener("mhso:stock", onAnswer);
+  return answer && answer.itemId === itemId ? answer : null;
 }
 
-// Index of the "}" closing the object that opens at text[open], skipping strings.
-function matchingBrace(text, open) {
-  let depth = 0;
-  let inString = false;
-  for (let i = open; i < text.length; i++) {
-    const c = text[i];
-    if (inString) {
-      if (c === "\\") i++;
-      else if (c === '"') inString = false;
-    } else if (c === '"') {
-      inString = true;
-    } else if (c === "{") {
-      depth++;
-    } else if (c === "}" && --depth === 0) {
-      return i;
-    }
-  }
-  return -1;
+function stockText(variants) {
+  if (variants.some((v) => !v.stock || v.stock.unlimited)) return null;
+  const inStock = variants.filter((v) => v.stock.quantity > 0);
+  if (!inStock.length) return null; // the site already shows "Sold out"
+  const label = (v) => Object.values(v.attributes || {}).join(" ");
+  return {
+    text:
+      variants.length === 1
+        ? `${variants[0].stock.quantity} left`
+        : variants.map((v) => `${label(v) || "Option"}: ${v.stock.quantity} left`).join(" · "),
+    low: inStock.every((v) => v.stock.quantity <= 5),
+  };
 }
 
 function showStockCount() {
-  const prices = document.querySelectorAll(".ProductItem-details .product-price");
+  const article = document.querySelector("article.ProductItem[data-item-id]");
+  if (!article) return;
+  const prices = article.querySelectorAll(".ProductItem-details .product-price");
   if (!prices.length) return;
-  const variants = productVariants();
-  if (!variants || variants.some((v) => !v.stock || v.stock.unlimited)) return;
-  const inStock = variants.filter((v) => v.stock.quantity > 0);
-  if (!inStock.length) return; // the site already shows "Sold out"
+  const itemId = article.dataset.itemId;
 
-  const label = (v) => Object.values(v.attributes || {}).join(" ");
-  const text =
-    variants.length === 1
-      ? `${variants[0].stock.quantity} left`
-      : variants.map((v) => `${label(v) || "Option"}: ${v.stock.quantity} left`).join(" · ");
-  const low = inStock.every((v) => v.stock.quantity <= 5);
+  if (article.mhsoStock === undefined) {
+    const answer = requestStock(itemId);
+    if (!answer) {
+      // The store may update its product data just after swapping the page in.
+      stockAttempts[itemId] = (stockAttempts[itemId] || 0) + 1;
+      if (stockAttempts[itemId] < STOCK_RETRIES) setTimeout(showStockCount, 300);
+      return;
+    }
+    article.mhsoStock = stockText(answer.variants);
+  }
+  if (!article.mhsoStock) return;
 
+  // Re-adds the badge if the store re-rendered the price area.
   for (const price of prices) {
     if (price.parentElement.querySelector(".mhso-stock-count")) continue;
     const badge = document.createElement("div");
-    badge.className = "mhso-stock-count" + (low ? " mhso-stock-count--low" : "");
-    badge.textContent = text;
+    badge.className = "mhso-stock-count" + (article.mhsoStock.low ? " mhso-stock-count--low" : "");
+    badge.textContent = article.mhsoStock.text;
     badge.title = "Inventory when this page loaded. Refresh for the latest count.";
     price.insertAdjacentElement("afterend", badge);
   }
@@ -554,7 +556,10 @@ function start() {
   let pending;
   new MutationObserver(() => {
     clearTimeout(pending);
-    pending = setTimeout(init, 200);
+    pending = setTimeout(() => {
+      showStockCount();
+      init();
+    }, 200);
   }).observe(document.body, { childList: true, subtree: true });
 }
 
