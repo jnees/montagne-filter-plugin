@@ -3,7 +3,7 @@
   "name": "Monty Filters: Improved Browsing for Montagne Parfums",
   "short_name": "Monty Filters",
   "version": "1.1.1",
-  "description": "Hide sold-out items, search, sort, and spot new or restocked fragrances on montagneparfums.com. Unofficial.",
+  "description": "Hide sold-out items, search and sort, and see restock history and units left on montagneparfums.com. Unofficial fan-made tool.",
   "minimum_chrome_version": "111",
   "icons": {
     "16": "icons/icon16.png",

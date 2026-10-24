@@ -11,7 +11,7 @@ Upload: `dist/monty-filters-<version>.zip` (build it with `./scripts/package.sh`
 **Name** (from the manifest): Monty Filters: Improved Browsing for Montagne Parfums
 
 **Summary** (from the manifest, max 132 characters):
-Hide sold-out items, search, sort, and spot new or restocked fragrances on montagneparfums.com. Unofficial.
+Hide sold-out items, search and sort, and see restock history and units left on montagneparfums.com. Unofficial fan-made tool.
 
 **Category:** Shopping
 
@@ -20,16 +20,16 @@ Hide sold-out items, search, sort, and spot new or restocked fragrances on monta
 **Description:**
 
 ```
-A fan-made tool for browsing the Montagne Parfums catalog. It adds a small control panel to the product list on montagneparfums.com, so you can quickly find what's available, search by name or inspiration, and catch new releases and restocks.
+A fan-made tool for browsing the Montagne Parfums catalog. It adds a small control panel to the product list on montagneparfums.com, so you can quickly find what's available, search by name or inspiration, and see what's been restocked or sold out, and how fast.
 
 FEATURES
 • Stock filter: show only in-stock items, only sold-out items, or everything. The grid closes up so there are no gaps.
 • Search: filter by fragrance name or by what it's inspired by, for example "xerjoff" or "vanilla". Press / to jump to the search box.
 • Sort: by name, by inspiration (groups fragrances by house), by price, or by what was most recently restocked or sold out.
-• Restock history: each product shows when it was last restocked or sold out, and how long its last restock lasted, for example "Sold out Oct 23 · last restock lasted about 3 min".
-• "Recent restock" and "New" tags on products restocked or added in the last 7 days, plus one-click filters for recent restocks and recent sellouts, newest first.
+• Restock history: each product shows when it was last restocked or sold out, and how long its last restock lasted, for example "Restocked in the Oct 23 drop" or "Sold out Oct 23 · last restock lasted about 3 min". The history is collected by the project's own tracker, which checks the store every hour and every minute during the Friday drop.
+• Quick filters: one click shows recent restocks (newest first) or recent sellouts (most recent first) from the last 7 days. "Recent restock" and "New" tags mark products restocked or added in the last week.
 • Friday drop countdown: see how long until the weekly 5:00 PM ET restock.
-• Units left: product pages show how many are left, for example "19 left".
+• Units left: product pages show how many are left under the price, for example "19 left".
 • Toolbar button: click the extension icon to switch between in-stock and all items.
 
 Your settings are remembered across visits.
@@ -56,7 +56,7 @@ This is an independent project and is not affiliated with, endorsed by or sponso
 **Single purpose description:**
 
 ```
-Improves browsing of the product list on montagneparfums.com by letting the user hide sold-out items, search, sort, and see each product's restock history.
+Improves browsing of products on montagneparfums.com by letting the user hide sold-out items, search, sort, and see each product's restock history and units left.
 ```
 
 **Permission justifications:**
@@ -64,7 +64,7 @@ Improves browsing of the product list on montagneparfums.com by letting the user
 | Permission | Justification |
 | --- | --- |
 | `storage` | Saves the user's stock-filter and sort settings, a local list of product IDs and their stock status, and a cached copy of the public restock-history file. Stored only in the user's browser. |
-| Host permission (content script on `montagneparfums.com`) | The extension's only function is to filter, search, sort and tag the product list on montagneparfums.com, so it must run on that site's pages. It runs on no other site. |
+| Host permission (content script on `montagneparfums.com`) | The extension's only function is to improve browsing on montagneparfums.com: it filters, searches, sorts and tags the product list, and shows units left on product pages, so it must run on that site's pages. It runs on no other site. |
 
 **Are you using remote code?** No. All JavaScript is included in the package. The extension downloads one public data file (CSV, not code) from the project's GitHub repository: https://raw.githubusercontent.com/jnees/montagne-filter-plugin/main/data/events.csv. It needs no extra permission because GitHub serves the file to any site.
 
@@ -92,6 +92,8 @@ https://github.com/jnees/montagne-filter-plugin/blob/main/PRIVACY.md
 
 Take these at a browser window size that gives a 16:10 shape. Then resize to exactly 1280×800 (Preview → Tools → Adjust Size works).
 
-1. The product grid in **In stock** view with the panel visible.
-2. A search, such as "creed", with **Sort: Inspiration A–Z**.
-3. Cards showing the "Recent restock" and "New" tags.
+1. The product grid in **In stock** view with the panel visible, showing the history captions under products and the drop countdown in the panel footer.
+2. The **Recent restock** chip turned on, showing the latest drop with "Recent restock" tags.
+3. **Recent sellout** turned on, with captions like "last restock lasted about 3 min".
+4. A product page with the "N left" badge under the price.
+5. A search, such as "creed", with **Sort: Inspiration A–Z**.
