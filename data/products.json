@@ -21,9 +21,9 @@
     "name": "EAU SANTAL INSPIRED BY LE LABO SANTAL 33",
     "url": "https://www.montagneparfums.com/fragrance/eau-santal",
     "price": 40.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-22T03:44:51Z",
+    "lastChange": "2026-10-25T15:30:54Z",
     "removed": false
   },
   "5c85d00eee6eb059ac4c44fd": {
@@ -1011,9 +1011,9 @@
     "name": "THE 212 INSPIRED BY MFK 724",
     "url": "https://www.montagneparfums.com/fragrance/the-212-inspired-by-mfk-724",
     "price": 45.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-22T03:44:51Z",
+    "lastChange": "2026-10-25T15:30:54Z",
     "removed": false
   },
   "653c17913bfeb273503b2902": {
