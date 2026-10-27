@@ -210,9 +210,9 @@
     "name": "TOBACCO NOIR INSPIRED BY PARFUMS DE MARLY HEROD",
     "url": "https://www.montagneparfums.com/fragrance/tobacconoir",
     "price": 40.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-22T03:44:51Z",
+    "lastChange": "2026-10-27T19:26:23Z",
     "removed": false
   },
   "5eb0c3c7a908ee3b46b5d5d9": {
