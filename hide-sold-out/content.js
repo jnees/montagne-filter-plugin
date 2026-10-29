@@ -454,16 +454,6 @@ function renderRecap() {
     return;
   }
 
-  const back = document.createElement("button");
-  back.type = "button";
-  back.className = "mhso-back";
-  back.textContent = "Back to browse";
-  back.addEventListener("click", () => {
-    recap = false;
-    chrome.storage.local.set({ [RECAP_KEY]: false });
-    render();
-  });
-
   const makeRow = (label, value, extra = "") => {
     const row = document.createElement("div");
     row.className = "mhso-recap-row";
@@ -502,7 +492,6 @@ function renderRecap() {
   };
 
   recapEl.innerHTML = "";
-  recapEl.appendChild(back);
   const grid = document.createElement("div");
   grid.className = "mhso-recap-grid";
   grid.append(buildColumn("RESTOCKED", data.restocked, "#1f7a4d"));
