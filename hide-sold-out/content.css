@@ -24,6 +24,10 @@ html.mhso-recap-mode .ProductList-grid {
 
 html.mhso-recap-mode #mhso-panel {
   width: 500px;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 32px);
+  max-height: calc(100vh - 32px);
 }
 
 html.mhso-recap-mode #mhso-panel .mhso-search,
@@ -235,7 +239,10 @@ html.mhso-recap-mode #mhso-panel .mhso-row {
 }
 
 #mhso-panel .mhso-recap {
-  max-height: min(62vh, 520px);
+  flex: 1 1 auto;
+  min-height: 0;
+  height: auto;
+  max-height: none;
   overflow: auto;
   margin-top: 0;
   padding: 0;
