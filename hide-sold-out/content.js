@@ -431,11 +431,16 @@ function buildRecapData() {
             .filter((candidate) => candidate && candidate.kind === "restocked" && candidate.time < event.time)
             .sort((a, b) => b.time - a.time)[0];
           const lastedMs = previousRestock ? event.time - previousRestock.time : null;
+          const precise = !!(
+            lastedMs != null &&
+            inDropWindow(new Date(previousRestock.time)) &&
+            inDropWindow(new Date(event.time))
+          );
           allEvents.push({
             name,
             kind: "sold_out",
             time: event.time,
-            lasted: lastedMs != null ? `lasted ${describeRun(lastedMs, false)}` : "",
+            lasted: lastedMs != null ? `lasted ${describeRun(lastedMs, precise)}` : "",
           });
         }
       }
