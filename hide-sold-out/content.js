@@ -404,6 +404,12 @@ const imageObserver = new IntersectionObserver(
   { rootMargin: "300px" }
 );
 
+function recapName(name) {
+  if (!name) return "";
+  const match = String(name).split(/\s+(?:inspired|isnpired)(?:\s+by)?\s+/i)[0];
+  return match || String(name);
+}
+
 function buildRecapData() {
   const now = Date.now();
   const restocked = [];
@@ -412,15 +418,16 @@ function buildRecapData() {
 
   for (const item of Object.values(shared.byId)) {
     if (!item || !item.name) continue;
+    const name = recapName(item.name);
     if (item.lastRestocked && item.lastRestocked >= now - TAG_WINDOW_MS) {
       restocked.push({
-        name: item.name,
+        name,
         time: item.lastRestocked,
       });
     }
     if (item.lastSoldOut && item.lastSoldOut >= now - TAG_WINDOW_MS) {
       soldOut.push({
-        name: item.name,
+        name,
         time: item.lastSoldOut,
         lasted: item.lastRunMs ? `lasted ${describeRun(item.lastRunMs, item.lastRunPrecise)}` : "",
       });
