@@ -416,20 +416,52 @@ function buildRecapData() {
   const soldOut = [];
   if (!shared || !shared.byId) return { restocked, soldOut };
 
+  const allEvents = [];
   for (const item of Object.values(shared.byId)) {
     if (!item || !item.name) continue;
     const name = recapName(item.name);
+    const events = Array.isArray(item.events) ? item.events : [];
+    if (events.length) {
+      for (const event of events) {
+        if (!event || !event.time || event.time < now - TAG_WINDOW_MS) continue;
+        if (event.kind === "restocked") {
+          allEvents.push({ name, kind: "restocked", time: event.time });
+        } else if (event.kind === "sold_out") {
+          const previousRestock = events
+            .filter((candidate) => candidate && candidate.kind === "restocked" && candidate.time < event.time)
+            .sort((a, b) => b.time - a.time)[0];
+          const lastedMs = previousRestock ? event.time - previousRestock.time : null;
+          allEvents.push({
+            name,
+            kind: "sold_out",
+            time: event.time,
+            lasted: lastedMs != null ? `lasted ${describeRun(lastedMs, false)}` : "",
+          });
+        }
+      }
+      continue;
+    }
+
     if (item.lastRestocked && item.lastRestocked >= now - TAG_WINDOW_MS) {
-      restocked.push({
-        name,
-        time: item.lastRestocked,
-      });
+      restocked.push({ name, time: item.lastRestocked });
     }
     if (item.lastSoldOut && item.lastSoldOut >= now - TAG_WINDOW_MS) {
       soldOut.push({
         name,
         time: item.lastSoldOut,
         lasted: item.lastRunMs ? `lasted ${describeRun(item.lastRunMs, item.lastRunPrecise)}` : "",
+      });
+    }
+  }
+
+  for (const event of allEvents) {
+    if (event.kind === "restocked") {
+      restocked.push({ name: event.name, time: event.time });
+    } else {
+      soldOut.push({
+        name: event.name,
+        time: event.time,
+        lasted: event.lasted || "",
       });
     }
   }

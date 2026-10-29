@@ -90,9 +90,11 @@ function buildHistory(text) {
       }
     }
 
-    const h = (byId[id] ||= { restocks: 0 });
+    const h = (byId[id] ||= { restocks: 0, events: [] });
     h.name = h.name || r[col.name];
-    switch (r[col.event]) {
+    const eventName = r[col.event];
+    h.events.push({ time, kind: eventName, detail: r[col.detail] || "" });
+    switch (eventName) {
       case "new":
         h.firstSeen = time;
         h.state = r[col.detail] === "sold out" ? "out" : "in";
