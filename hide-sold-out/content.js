@@ -526,6 +526,14 @@ function render() {
   }
   panel.querySelector(".mhso-sort").value = activeSort();
 
+  const search = panel.querySelector(".mhso-search");
+  const stockWrap = panel.querySelector(".mhso-stock");
+  const sortWrap = panel.querySelector(".mhso-sort-label");
+  const chips = panel.querySelector(".mhso-row");
+  [search, stockWrap, sortWrap, chips].forEach((el) => {
+    if (el) el.hidden = recap;
+  });
+
   let shown = 0;
   for (const item of items) {
     const { text } = itemInfo(item);
