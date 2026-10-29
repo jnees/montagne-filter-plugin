@@ -91,16 +91,19 @@ function buildHistory(text) {
     }
 
     const h = (byId[id] ||= { restocks: 0 });
+    h.name = h.name || r[col.name];
     switch (r[col.event]) {
       case "new":
         h.firstSeen = time;
         h.state = r[col.detail] === "sold out" ? "out" : "in";
+        h.name = h.name || r[col.name];
         break;
       case "restocked":
         h.lastRestocked = time;
         h.restockedInDrop = inDropWindow(new Date(time));
         h.restocks++;
         h.state = "in";
+        h.name = h.name || r[col.name];
         break;
       case "sold_out":
         if (h.state === "in" && h.lastRestocked) {
@@ -109,6 +112,7 @@ function buildHistory(text) {
         }
         h.lastSoldOut = time;
         h.state = "out";
+        h.name = h.name || r[col.name];
         break;
     }
   }

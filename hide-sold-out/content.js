@@ -6,6 +6,7 @@
 const STOCK_KEY = "stockFilter"; // "in" | "out" | "all"
 const LEGACY_HIDE_KEY = "hideSoldOut";
 const SORT_KEY = "sortOrder"; // "default" | "name" | "inspiration" | "price" | "restocked" | "soldout"
+const RECAP_KEY = "weeklyRecap"; // true when the local report view is active
 const SEEN_KEY = "seenItems";
 const TAG_WINDOW_MS = 7 * 24 * 60 * 60 * 1000;
 
@@ -14,6 +15,7 @@ const ITEM = ".ProductList-item[data-item-id]";
 
 let stock = "in";
 let sort = "default";
+let recap = false;
 let query = "";
 let tagFilter = null; // null | "new" | "restocked" | "sellout"
 // While the "Recent restock" or "Recent sellout" chip is on, it picks the stock
@@ -45,10 +47,11 @@ let historyRequest = null;
 // Default to in-stock only; applied at document_start so hidden items never
 // flash. Falls back to the older on/off setting if that's all that's stored.
 chrome.storage.local.get(
-  { [STOCK_KEY]: null, [LEGACY_HIDE_KEY]: true, [SORT_KEY]: "default" },
+  { [STOCK_KEY]: null, [LEGACY_HIDE_KEY]: true, [SORT_KEY]: "default", [RECAP_KEY]: false },
   (data) => {
     stock = data[STOCK_KEY] || (data[LEGACY_HIDE_KEY] ? "in" : "all");
     sort = data[SORT_KEY];
+    recap = !!data[RECAP_KEY];
     render();
   }
 );
@@ -56,7 +59,8 @@ chrome.storage.local.get(
 chrome.storage.onChanged.addListener((changes) => {
   if (STOCK_KEY in changes) stock = changes[STOCK_KEY].newValue;
   if (SORT_KEY in changes) sort = changes[SORT_KEY].newValue;
-  if (STOCK_KEY in changes || SORT_KEY in changes) render();
+  if (RECAP_KEY in changes) recap = !!changes[RECAP_KEY].newValue;
+  if (STOCK_KEY in changes || SORT_KEY in changes || RECAP_KEY in changes) render();
 });
 
 function isHiddenByStock(item) {
@@ -285,6 +289,8 @@ function buildPanel() {
       <button type="button" class="mhso-chip" data-filter="sellout"></button>
       <button type="button" class="mhso-chip" data-filter="new"></button>
     </div>
+    <button type="button" class="mhso-recap-toggle">Weekly recap</button>
+    <div class="mhso-recap" aria-live="polite" hidden></div>
     <div class="mhso-status" aria-live="polite"></div>
     <div class="mhso-meta">
       <div class="mhso-drop"></div>
@@ -323,6 +329,20 @@ function buildPanel() {
     } else {
       chrome.storage.local.set({ [SORT_KEY]: e.target.value });
     }
+  });
+
+  panel.querySelector(".mhso-recap-toggle").addEventListener("click", () => {
+    recap = !recap;
+    chrome.storage.local.set({ [RECAP_KEY]: recap });
+    render();
+  });
+
+  panel.querySelector(".mhso-recap").addEventListener("click", (e) => {
+    const back = e.target.closest(".mhso-back");
+    if (!back) return;
+    recap = false;
+    chrome.storage.local.set({ [RECAP_KEY]: false });
+    render();
   });
 
   panel.querySelectorAll("[data-stock]").forEach((button) => {
@@ -384,9 +404,116 @@ const imageObserver = new IntersectionObserver(
   { rootMargin: "300px" }
 );
 
+function buildRecapData() {
+  const now = Date.now();
+  const restocked = [];
+  const soldOut = [];
+  if (!shared || !shared.byId) return { restocked, soldOut };
+
+  for (const item of Object.values(shared.byId)) {
+    if (!item || !item.name) continue;
+    if (item.lastRestocked && item.lastRestocked >= now - TAG_WINDOW_MS) {
+      restocked.push({
+        name: item.name,
+        time: item.lastRestocked,
+      });
+    }
+    if (item.lastSoldOut && item.lastSoldOut >= now - TAG_WINDOW_MS) {
+      soldOut.push({
+        name: item.name,
+        time: item.lastSoldOut,
+        lasted: item.lastRunMs ? `lasted ${describeRun(item.lastRunMs, item.lastRunPrecise)}` : "",
+      });
+    }
+  }
+
+  restocked.sort((a, b) => b.time - a.time);
+  soldOut.sort((a, b) => b.time - a.time);
+  return { restocked, soldOut };
+}
+
+function renderRecap() {
+  const recapEl = panel.querySelector(".mhso-recap");
+  const recapToggle = panel.querySelector(".mhso-recap-toggle");
+  if (!recapEl || !recapToggle) return;
+
+  recapToggle.setAttribute("aria-pressed", String(recap));
+  recapToggle.textContent = recap ? "Back to browse" : "Weekly recap";
+
+  if (!recap) {
+    recapEl.hidden = true;
+    recapEl.innerHTML = "";
+    return;
+  }
+
+  const data = buildRecapData();
+  const hasRecap = data.restocked.length || data.soldOut.length;
+  recapEl.hidden = !hasRecap;
+  if (!hasRecap) {
+    recapEl.innerHTML = '<div class="mhso-recap-empty">No stock changes in the last 7 days.</div>';
+    return;
+  }
+
+  const back = document.createElement("button");
+  back.type = "button";
+  back.className = "mhso-back";
+  back.textContent = "Back to browse";
+  back.addEventListener("click", () => {
+    recap = false;
+    chrome.storage.local.set({ [RECAP_KEY]: false });
+    render();
+  });
+
+  const makeRow = (label, value, extra = "") => {
+    const row = document.createElement("div");
+    row.className = "mhso-recap-row";
+    const name = document.createElement("span");
+    name.className = "mhso-recap-name";
+    name.textContent = label;
+    const time = document.createElement("span");
+    time.className = "mhso-recap-time";
+    time.textContent = value;
+    if (extra) time.title = extra;
+    row.append(name, time);
+    return row;
+  };
+
+  const buildColumn = (title, items, accent = "") => {
+    const col = document.createElement("div");
+    col.className = "mhso-recap-col";
+    const heading = document.createElement("div");
+    heading.className = "mhso-recap-title";
+    heading.textContent = `${title} (${items.length})`;
+    if (accent) heading.style.color = accent;
+    const list = document.createElement("div");
+    list.className = "mhso-recap-list";
+    for (const item of items) {
+      const row = makeRow(item.name, monthDayFormat.format(item.time), item.lasted || "");
+      if (item.lasted) {
+        row.classList.add("mhso-recap-row--soldout");
+        const time = row.querySelector(".mhso-recap-time");
+        time.textContent = item.lasted;
+        time.classList.add("mhso-recap-time--soldout");
+      }
+      list.appendChild(row);
+    }
+    col.append(heading, list);
+    return col;
+  };
+
+  recapEl.innerHTML = "";
+  recapEl.appendChild(back);
+  const grid = document.createElement("div");
+  grid.className = "mhso-recap-grid";
+  grid.append(buildColumn("RESTOCKED", data.restocked, "#1f7a4d"));
+  grid.append(buildColumn("SOLD OUT", data.soldOut, "#b3261e"));
+  recapEl.appendChild(grid);
+}
+
 function render() {
   root.classList.toggle("mhso-stock-in", activeStock() === "in");
   root.classList.toggle("mhso-stock-out", activeStock() === "out");
+  root.classList.toggle("mhso-recap-mode", recap);
   const items = [...document.querySelectorAll(ITEM)];
   // Flex layout is what makes gap-free filtering and `order` sorting work.
   root.classList.toggle(
@@ -434,6 +561,7 @@ function render() {
 
   panel.querySelector(".mhso-status").textContent =
     `Showing ${shown} of ${items.length}`;
+  renderRecap();
   renderMeta();
 }
 
