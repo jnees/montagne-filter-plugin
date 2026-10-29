@@ -8,6 +8,7 @@ A Chrome extension for [montagneparfums.com](https://www.montagneparfums.com/fra
 - **Restock history** under each product, such as "Restocked in the Oct 23 drop" or "Sold out Oct 23 · last restock lasted about 3 min".
 - **"Recent restock" and "New" tags** on products restocked or added in the last 7 days, and a **Recent sellout** filter for what sold out in the last 7 days.
 - **A countdown** to the weekly Friday restock (5:00 PM New York time).
+- **A weekly recap** of the recent restocks, sellouts and new arrivals in the last 7 days.
 - **Units left** on each product's page, such as "19 left", read from the page itself.
 
 ![alt text](image.png)
@@ -36,7 +37,7 @@ This also works in other Chromium-based browsers such as Edge, Brave and Arc. Th
 | **Recent restock (n)** | Shows only items restocked in the last 7 days, most recent first. Click it again to show everything. |
 | **Recent sellout (n)** | Shows only items that sold out in the last 7 days, most recent first. Click it again to show everything. |
 | **New (n)** | Shows only items added in the last 7 days. Click it again to show everything. |
-| **Panel footer** | A countdown to the next Friday drop, and how far back the restock history goes. |
+| **Panel footer** | A countdown to the next Friday drop, a weekly recap of the last 7 days, and how far back the restock history goes. |
 | **Units left** (product pages) | Under the price, how many are left, for example "19 left" (orange at 5 or fewer). It's the count when the page loaded, so refresh for the latest. Not shown once something is sold out. |
 
 The extension remembers your stock and sort choices across every page of the site. It starts on **In stock**. Turning on **Recent restock** or **Recent sellout** also switches the stock filter and sort to match (In stock + Recently restocked, or Sold out + Recently sold out), shown in the panel. You can change either while the chip is on; turning the chip off goes back to your usual settings.

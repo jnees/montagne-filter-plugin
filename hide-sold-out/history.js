@@ -68,10 +68,28 @@ function buildHistory(text) {
   const [header, ...rows] = parseCsv(text);
   const col = Object.fromEntries((header || []).map((name, i) => [name, i]));
   const byId = {};
+  const summary = { new: 0, restocked: 0, soldOut: 0 };
+  const weekStartMs = Date.now() - 7 * DAY_MS;
+
   for (const r of rows) {
     const id = r[col.id];
     const time = Date.parse(r[col.time]);
     if (!id || Number.isNaN(time)) continue;
+
+    if (time >= weekStartMs) {
+      switch (r[col.event]) {
+        case "new":
+          summary.new++;
+          break;
+        case "restocked":
+          summary.restocked++;
+          break;
+        case "sold_out":
+          summary.soldOut++;
+          break;
+      }
+    }
+
     const h = (byId[id] ||= { restocks: 0 });
     switch (r[col.event]) {
       case "new":
@@ -94,6 +112,11 @@ function buildHistory(text) {
         break;
     }
   }
+  Object.defineProperty(byId, "summary", {
+    value: summary,
+    enumerable: false,
+    configurable: true,
+  });
   return byId;
 }
 
@@ -106,11 +129,15 @@ async function loadHistory() {
   } catch {
     cached = undefined;
   }
-  const fromCache = (stale) => ({
-    byId: buildHistory(cached.text),
-    fetchedAt: cached.fetchedAt,
-    stale,
-  });
+  const fromCache = (stale) => {
+    const byId = buildHistory(cached.text);
+    return {
+      byId,
+      summary: byId.summary,
+      fetchedAt: cached.fetchedAt,
+      stale,
+    };
+  };
   if (cached && Date.now() - cached.fetchedAt < HISTORY_MAX_AGE_MS) return fromCache(false);
 
   try {

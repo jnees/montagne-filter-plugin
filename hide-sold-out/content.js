@@ -437,6 +437,15 @@ function render() {
   renderMeta();
 }
 
+function weeklySummaryText(summary) {
+  if (!summary) return "";
+  const parts = [];
+  if (summary.new) parts.push(`${summary.new} new`);
+  if (summary.restocked) parts.push(`${summary.restocked} restocked`);
+  if (summary.soldOut) parts.push(`${summary.soldOut} sold out`);
+  return parts.length ? `Weekly recap: ${parts.join(" · ")}` : "";
+}
+
 function renderMeta() {
   if (!panel) return;
   const drop = nextDrop();
@@ -446,8 +455,10 @@ function renderMeta() {
 
   const source = panel.querySelector(".mhso-source");
   if (shared) {
+    const recap = weeklySummaryText(shared.summary);
     source.textContent =
       `Restock history since ${monthDayFormat.format(TRACKING_SINCE)}` +
+      (recap ? ` · ${recap}` : "") +
       (shared.stale ? " (offline copy)" : "");
     source.title = `Shared history, fetched ${fullFormat.format(shared.fetchedAt)}`;
   } else {
