@@ -26,6 +26,13 @@ html.mhso-recap-mode #mhso-panel {
   width: 500px;
 }
 
+html.mhso-recap-mode #mhso-panel .mhso-search,
+html.mhso-recap-mode #mhso-panel .mhso-stock,
+html.mhso-recap-mode #mhso-panel .mhso-sort-label,
+html.mhso-recap-mode #mhso-panel .mhso-row {
+  display: none !important;
+}
+
 /* Product images the extension had to reload (see fixImages in content.js).
    The site's inline sizing for these was measured while hidden, so override
    it and fill the card like the site's own "fill" mode does. */
