@@ -3,9 +3,9 @@
     "name": "PINEAPPLE ROYALE INSPIRED BY CREED AVENTUS",
     "url": "https://www.montagneparfums.com/fragrance/pineappleroyale",
     "price": 45.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-29T14:29:40Z",
+    "lastChange": "2026-10-30T20:56:00Z",
     "removed": false
   },
   "5c85ccab419202963220948f": {
@@ -201,18 +201,18 @@
     "name": "PINK ROSE INSPIRED BY PARFUMS DE MARLY DELINA",
     "url": "https://www.montagneparfums.com/fragrance/pinkrose",
     "price": 40.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-22T03:44:51Z",
+    "lastChange": "2026-10-30T20:57:00Z",
     "removed": false
   },
   "5e758c91435a8c5222e9e087": {
     "name": "TOBACCO NOIR INSPIRED BY PARFUMS DE MARLY HEROD",
     "url": "https://www.montagneparfums.com/fragrance/tobacconoir",
     "price": 40.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-27T19:26:23Z",
+    "lastChange": "2026-10-30T20:57:00Z",
     "removed": false
   },
   "5eb0c3c7a908ee3b46b5d5d9": {
@@ -309,9 +309,9 @@
     "name": "ELYSIAN INTENSE INSPIRED BY ROJA ELYSIUM COLOGNE",
     "url": "https://www.montagneparfums.com/fragrance/elysianintense",
     "price": 50.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-28T07:29:11Z",
+    "lastChange": "2026-10-30T20:57:00Z",
     "removed": false
   },
   "5f8221e6f8608f513c67cd61": {
@@ -390,9 +390,9 @@
     "name": "OUD BOIS INSPIRED BY TOM FORD OUD WOOD",
     "url": "https://www.montagneparfums.com/fragrance/oud-bois",
     "price": 40.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-22T03:44:51Z",
+    "lastChange": "2026-10-30T20:58:00Z",
     "removed": false
   },
   "5fbf31b99ee0f32b874774b9": {
@@ -615,9 +615,9 @@
     "name": "LONDON INSPIRED BY WIDIAN LONDON",
     "url": "https://www.montagneparfums.com/fragrance/london",
     "price": 40.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-24T01:00:15Z",
+    "lastChange": "2026-10-30T20:58:00Z",
     "removed": false
   },
   "622bf342982dd659fb370050": {
@@ -750,9 +750,9 @@
     "name": "PINEAPPLE MUSK INSPIRED BY CREED AVENTUS",
     "url": "https://www.montagneparfums.com/fragrance/pineapple-musk",
     "price": 60.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-22T03:44:51Z",
+    "lastChange": "2026-10-30T21:04:00Z",
     "removed": false
   },
   "63a8a6605264dd4330467286": {
@@ -966,9 +966,9 @@
     "name": "PERCEVAL INSPIRED BY PARFUMS DE MARLY PERCIVAL",
     "url": "https://www.montagneparfums.com/fragrance/perceval-inspired-by-parfums-de-marly-percival",
     "price": 40.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-22T03:44:51Z",
+    "lastChange": "2026-10-30T20:58:00Z",
     "removed": false
   },
   "6520514daeccc37e9b2137e1": {
@@ -1011,9 +1011,9 @@
     "name": "THE 212 INSPIRED BY MFK 724",
     "url": "https://www.montagneparfums.com/fragrance/the-212-inspired-by-mfk-724",
     "price": 45.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-25T15:30:54Z",
+    "lastChange": "2026-10-30T20:58:00Z",
     "removed": false
   },
   "653c17913bfeb273503b2902": {
@@ -1209,9 +1209,9 @@
     "name": "EAU MUSC INSPIRED BY LE LABO MUSC 25 LOS ANGELES CITY EXCLUSIVE",
     "url": "https://www.montagneparfums.com/fragrance/otws15i03wvm2nv0n3jlhkrhdp9jdq",
     "price": 40.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-22T03:44:51Z",
+    "lastChange": "2026-10-30T20:59:00Z",
     "removed": false
   },
   "670984b4cee3e009ace25c9c": {
@@ -1236,9 +1236,9 @@
     "name": "BOLD EFFECT INSPIRED BY INITIO SIDE EFFECT",
     "url": "https://www.montagneparfums.com/fragrance/bold-effect-inspired-by-initio-side-effect",
     "price": 45.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-26T23:30:59Z",
+    "lastChange": "2026-10-30T20:59:00Z",
     "removed": false
   },
   "671c048b55b95928aa89ce0a": {
@@ -1254,9 +1254,9 @@
     "name": "AOUD MARACUJA INSPIRED BY MAISON CRIVELLI OUD MARACUJ\u00c1",
     "url": "https://www.montagneparfums.com/fragrance/aoud-maracuja-inspired-by-maison-crivelli-oud-maracuj",
     "price": 45.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-22T03:44:51Z",
+    "lastChange": "2026-10-30T21:03:00Z",
     "removed": false
   },
   "6748ad7c777d7b48efda9321": {
@@ -1308,9 +1308,9 @@
     "name": "CARLYLE INSPIRED BY PARFUMS DE MARLY CARLISLE",
     "url": "https://www.montagneparfums.com/fragrance/carlyle-inspired-by-parfums-de-marly-carlisle",
     "price": 45.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-24T12:39:01Z",
+    "lastChange": "2026-10-30T20:59:00Z",
     "removed": false
   },
   "679409b6a165a16c98b6c3eb": {
@@ -1506,9 +1506,9 @@
     "name": "MOJAVE SPIRIT INSPIRED BY BYREDO MOJAVE GHOST EDP",
     "url": "https://www.montagneparfums.com/fragrance/mojave-spirit-inspired-by-byredo-mojave-ghost-edp",
     "price": 45.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-22T03:44:51Z",
+    "lastChange": "2026-10-30T20:59:00Z",
     "removed": false
   },
   "69d951bde8c53572a3eb8249": {
@@ -1533,9 +1533,9 @@
     "name": "CRIMSON CROWN INSPIRED BY MIND GAMES J'ADOUBE",
     "url": "https://www.montagneparfums.com/fragrance/crimson-crown-inspired-by-mind-games-jadoube",
     "price": 45.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-27T18:30:15Z",
+    "lastChange": "2026-10-30T21:00:00Z",
     "removed": false
   },
   "6a19e862089d1869aaa43e06": {
@@ -1551,9 +1551,9 @@
     "name": "AZONTO ABSOLU INSPIRED BY BYREDO BAL D'AFRIQUE ABSOLU",
     "url": "https://www.montagneparfums.com/fragrance/azonto-absolu-inspired-by-byredo-bal-dafrique-absolu",
     "price": 45.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-28T15:28:26Z",
+    "lastChange": "2026-10-30T21:00:00Z",
     "removed": false
   },
   "6a63cf0bee0be1675472f544": {
