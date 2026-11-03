@@ -930,9 +930,9 @@
     "name": "TORINO 2022 INSPIRED BY XERJOFF TORINO22",
     "url": "https://www.montagneparfums.com/fragrance/torino-2022",
     "price": 40.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-22T03:44:51Z",
+    "lastChange": "2026-11-03T06:33:39Z",
     "removed": false
   },
   "6495eceb2e6c156fc0a53604": {
