@@ -966,9 +966,9 @@
     "name": "PERCEVAL INSPIRED BY PARFUMS DE MARLY PERCIVAL",
     "url": "https://www.montagneparfums.com/fragrance/perceval-inspired-by-parfums-de-marly-percival",
     "price": 40.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-30T20:58:00Z",
+    "lastChange": "2026-11-04T14:26:23Z",
     "removed": false
   },
   "6520514daeccc37e9b2137e1": {
