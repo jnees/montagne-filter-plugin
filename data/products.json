@@ -1335,9 +1335,9 @@
     "name": "OPALINE INSPIRED BY PARFUMS DE MARLY VALAYA",
     "url": "https://www.montagneparfums.com/fragrance/opaline-inspired-by-parfums-de-marly-valaya",
     "price": 45.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-22T03:44:51Z",
+    "lastChange": "2026-11-04T06:34:06Z",
     "removed": false
   },
   "67d4988a9a20977cc608e0a8": {
