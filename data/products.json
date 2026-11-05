@@ -768,9 +768,9 @@
     "name": "EAU MATCHA INSPIRED BY LE LABO THE MATCHA 26",
     "url": "https://www.montagneparfums.com/fragrance/eau-matcha",
     "price": 40.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-05T06:34:15Z",
+    "lastChange": "2026-11-05T10:26:35Z",
     "removed": false
   },
   "640268d8fade8f7413d7edaa": {
@@ -1173,9 +1173,9 @@
     "name": "GENTLE SILVER INSPIRED BY MFK GENTLE FLUIDITY SILVER",
     "url": "https://www.montagneparfums.com/fragrance/gentle-silver-inspired-by-mfk-gentle-fluidity-silver",
     "price": 45.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-05T07:26:43Z",
+    "lastChange": "2026-11-05T10:26:35Z",
     "removed": false
   },
   "66c8bcdfc83048496717cde6": {
