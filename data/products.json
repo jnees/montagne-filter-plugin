@@ -813,9 +813,9 @@
     "name": "PINK ROSE EXCLUSIF INSPIRED BY PARFUMS DE MARLY DELINA EXCLUSIF",
     "url": "https://www.montagneparfums.com/fragrance/pink-rose-exclusif",
     "price": 45.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-22T03:44:51Z",
+    "lastChange": "2026-11-06T06:33:52Z",
     "removed": false
   },
   "641cad4425312c598c990e96": {
