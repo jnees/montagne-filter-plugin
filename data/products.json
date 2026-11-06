@@ -30,9 +30,9 @@
     "name": "LA CIEL DE NUIT INSPIRED BY DIOR SAUVAGE",
     "url": "https://www.montagneparfums.com/fragrance/la-ciel-de-nuit",
     "price": 40.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-01T06:31:37Z",
+    "lastChange": "2026-11-06T21:58:00Z",
     "removed": false
   },
   "5c85d6bfee6eb059ac4c86ed": {
@@ -201,9 +201,9 @@
     "name": "PINK ROSE INSPIRED BY PARFUMS DE MARLY DELINA",
     "url": "https://www.montagneparfums.com/fragrance/pinkrose",
     "price": 40.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-30T20:57:00Z",
+    "lastChange": "2026-11-06T22:05:00Z",
     "removed": false
   },
   "5e758c91435a8c5222e9e087": {
@@ -372,36 +372,36 @@
     "name": "CANNOLI INSPIRED BY XERJOFF ITALICA",
     "url": "https://www.montagneparfums.com/fragrance/cannoli",
     "price": 40.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-28T01:27:09Z",
+    "lastChange": "2026-11-06T21:58:00Z",
     "removed": false
   },
   "5fbf2de23c6ccf69f3522236": {
     "name": "ALEXANDER II INSPIRED BY XERJOFF ALEXANDRIA II",
     "url": "https://www.montagneparfums.com/fragrance/alexander2",
     "price": 45.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-22T03:44:51Z",
+    "lastChange": "2026-11-06T22:13:00Z",
     "removed": false
   },
   "5fbf2f1c18e72e5fdbcb4add": {
     "name": "OUD BOIS INSPIRED BY TOM FORD OUD WOOD",
     "url": "https://www.montagneparfums.com/fragrance/oud-bois",
     "price": 40.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-05T22:26:19Z",
+    "lastChange": "2026-11-06T21:58:00Z",
     "removed": false
   },
   "5fbf31b99ee0f32b874774b9": {
     "name": "VANILLE ABSOLUTE INSPIRED BY NISHANE ANI",
     "url": "https://www.montagneparfums.com/fragrance/vanilleabsolute",
     "price": 40.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-03T00:42:46Z",
+    "lastChange": "2026-11-06T21:58:00Z",
     "removed": false
   },
   "601671084f4ce571ffd4cb7c": {
@@ -615,9 +615,9 @@
     "name": "LONDON INSPIRED BY WIDIAN LONDON",
     "url": "https://www.montagneparfums.com/fragrance/london",
     "price": 40.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-30T20:58:00Z",
+    "lastChange": "2026-11-06T22:31:00Z",
     "removed": false
   },
   "622bf342982dd659fb370050": {
@@ -687,9 +687,9 @@
     "name": "TABAC VANILLE INSPIRED BY TOM FORD TOBACCO VANILLE",
     "url": "https://www.montagneparfums.com/fragrance/tabac-vanille",
     "price": 40.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-22T03:44:51Z",
+    "lastChange": "2026-11-06T21:58:00Z",
     "removed": false
   },
   "637fd1afd0766a2feb149b60": {
@@ -750,9 +750,9 @@
     "name": "PINEAPPLE MUSK INSPIRED BY CREED AVENTUS",
     "url": "https://www.montagneparfums.com/fragrance/pineapple-musk",
     "price": 60.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-30T21:04:00Z",
+    "lastChange": "2026-11-06T21:59:00Z",
     "removed": false
   },
   "63a8a6605264dd4330467286": {
@@ -813,9 +813,9 @@
     "name": "PINK ROSE EXCLUSIF INSPIRED BY PARFUMS DE MARLY DELINA EXCLUSIF",
     "url": "https://www.montagneparfums.com/fragrance/pink-rose-exclusif",
     "price": 45.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-06T06:33:52Z",
+    "lastChange": "2026-11-06T21:59:00Z",
     "removed": false
   },
   "641cad4425312c598c990e96": {
@@ -885,9 +885,9 @@
     "name": "CARNAL GRAY EXTRAIT INSPIRED BY BDK PARFUMS GRIS CHARNEL EXTRAIT",
     "url": "https://www.montagneparfums.com/fragrance/carnal-gray-extrait",
     "price": 45.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-23T21:13:00Z",
+    "lastChange": "2026-11-06T21:59:00Z",
     "removed": false
   },
   "6465ba1b5a521e20c0af66a8": {
@@ -957,9 +957,9 @@
     "name": "IMMENSITY INSPIRED BY l'IMMENSITE BY LOUIS VUITTON",
     "url": "https://www.montagneparfums.com/fragrance/immensity-inspired-by-limmensite-by-louis-vuitton",
     "price": 45.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-05T16:28:17Z",
+    "lastChange": "2026-11-06T21:59:00Z",
     "removed": false
   },
   "64cd595c825b0778a4f12aea": {
@@ -1002,9 +1002,9 @@
     "name": "EAU NOIR INSPIRED BY LE LABO THE NOIR 29",
     "url": "https://www.montagneparfums.com/fragrance/eau-noir-inspired-by-le-labo-the-noir-29",
     "price": 40.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-06T08:28:17Z",
+    "lastChange": "2026-11-06T21:59:00Z",
     "removed": false
   },
   "6539399fb00d14145d276f4f": {
@@ -1110,9 +1110,9 @@
     "name": "PALISADE INSPIRED BY MIND GAMES BLOCKADE",
     "url": "https://www.montagneparfums.com/fragrance/palisade-inspired-by-mind-games-blockade",
     "price": 45.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-01T06:31:37Z",
+    "lastChange": "2026-11-06T21:59:00Z",
     "removed": false
   },
   "6635502661689a56db481742": {
@@ -1173,9 +1173,9 @@
     "name": "GENTLE SILVER INSPIRED BY MFK GENTLE FLUIDITY SILVER",
     "url": "https://www.montagneparfums.com/fragrance/gentle-silver-inspired-by-mfk-gentle-fluidity-silver",
     "price": 45.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-05T21:26:01Z",
+    "lastChange": "2026-11-06T21:59:00Z",
     "removed": false
   },
   "66c8bcdfc83048496717cde6": {
@@ -1254,9 +1254,9 @@
     "name": "AOUD MARACUJA INSPIRED BY MAISON CRIVELLI OUD MARACUJ\u00c1",
     "url": "https://www.montagneparfums.com/fragrance/aoud-maracuja-inspired-by-maison-crivelli-oud-maracuj",
     "price": 45.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-30T21:03:00Z",
+    "lastChange": "2026-11-06T22:00:00Z",
     "removed": false
   },
   "6748ad7c777d7b48efda9321": {
@@ -1290,9 +1290,9 @@
     "name": "LUVRS INSPIRED BY LOUIS VUITTON LOVERS",
     "url": "https://www.montagneparfums.com/fragrance/luvrs-inspired-by-louis-vuitton-lovers",
     "price": 45.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-22T03:44:51Z",
+    "lastChange": "2026-11-06T22:01:00Z",
     "removed": false
   },
   "6748b701b9528f56d3e2bfe5": {
@@ -1335,9 +1335,9 @@
     "name": "OPALINE INSPIRED BY PARFUMS DE MARLY VALAYA",
     "url": "https://www.montagneparfums.com/fragrance/opaline-inspired-by-parfums-de-marly-valaya",
     "price": 45.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-04T06:34:06Z",
+    "lastChange": "2026-11-06T22:00:00Z",
     "removed": false
   },
   "67d4988a9a20977cc608e0a8": {
@@ -1461,9 +1461,9 @@
     "name": "PORT D'AZUR INSPIRED BY LOUMARI PORTHOLE",
     "url": "https://www.montagneparfums.com/fragrance/port-dazur-inspired-by-loumari-porthole",
     "price": 40.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-03T18:26:59Z",
+    "lastChange": "2026-11-06T22:00:00Z",
     "removed": false
   },
   "692789f344adae395c90ea6d": {
@@ -1560,27 +1560,27 @@
     "name": "MOJAVE SPIRIT ABSOLU INSPIRED BY BYREDO MOJAVE GHOST ABSOLU",
     "url": "https://www.montagneparfums.com/fragrance/mojave-spirit-absolu-inspired-by-byredo-mojave-ghost-absolu",
     "price": 45.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-04T05:26:46Z",
+    "lastChange": "2026-11-06T22:00:00Z",
     "removed": false
   },
   "6a63cfcccc64063e799e9d7c": {
     "name": "OOLONG CHA INSPIRED BY NISHANE WULONG CHA",
     "url": "https://www.montagneparfums.com/fragrance/oolong-cha-inspired-by-nishane-wulong-cha",
     "price": 40.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-06T08:28:17Z",
+    "lastChange": "2026-11-06T22:00:00Z",
     "removed": false
   },
   "6ab6da2f44aea31d23e23b95": {
     "name": "SPEED DEMONS INSPIRED BY EX NIHILO SPEED LEGENDS",
     "url": "https://www.montagneparfums.com/fragrance/speed-demons-inspired-by-ex-nihilo-speed-legends",
     "price": 45.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-23T21:01:00Z",
+    "lastChange": "2026-11-06T22:00:00Z",
     "removed": false
   },
   "6ab6db502efa7c342b31c826": {
