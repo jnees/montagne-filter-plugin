@@ -786,9 +786,9 @@
     "name": "APPLE COGNAC ON THE ROCKS INSPIRED BY KILIAN APPLE BRANDY ON THE ROCKS",
     "url": "https://www.montagneparfums.com/fragrance/apple-cognac-on-the-rocks",
     "price": 40.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-22T03:44:51Z",
+    "lastChange": "2026-11-07T07:26:05Z",
     "removed": false
   },
   "64026d9cc1b1641c8aba3e75": {
