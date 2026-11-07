@@ -921,9 +921,9 @@
     "name": "TIGRIS COLOGNE INSPIRED BY BVLGARI TYGAR",
     "url": "https://www.montagneparfums.com/fragrance/tigris-cologne",
     "price": 45.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-22T03:44:51Z",
+    "lastChange": "2026-11-07T00:41:07Z",
     "removed": false
   },
   "6495e9b304f9433aeef7cec1": {
@@ -1011,9 +1011,9 @@
     "name": "THE 212 INSPIRED BY MFK 724",
     "url": "https://www.montagneparfums.com/fragrance/the-212-inspired-by-mfk-724",
     "price": 45.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-30T20:58:00Z",
+    "lastChange": "2026-11-07T00:41:07Z",
     "removed": false
   },
   "653c17913bfeb273503b2902": {
@@ -1497,9 +1497,9 @@
     "name": "GYPSY MIST INSPIRED BY BYREDO GYPSY WATER EDP",
     "url": "https://www.montagneparfums.com/fragrance/gypsy-mist-inspired-by-byredo-gypsy-water-edp",
     "price": 40.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-22T03:44:51Z",
+    "lastChange": "2026-11-07T00:41:07Z",
     "removed": false
   },
   "69d9505fe8c53572a3eb80e0": {
