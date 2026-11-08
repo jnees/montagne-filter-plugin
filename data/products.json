@@ -1020,9 +1020,9 @@
     "name": "GINGHAM GREEN INSPIRED BY PARFUMS DE MARLY GREENLEY",
     "url": "https://www.montagneparfums.com/fragrance/gingham-green-inspired-by-pdm-greenley",
     "price": 45.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-22T03:44:51Z",
+    "lastChange": "2026-11-08T04:26:19Z",
     "removed": false
   },
   "653c19f73bfeb273503b2bf0": {
