@@ -921,9 +921,9 @@
     "name": "TIGRIS COLOGNE INSPIRED BY BVLGARI TYGAR",
     "url": "https://www.montagneparfums.com/fragrance/tigris-cologne",
     "price": 45.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-07T00:41:07Z",
+    "lastChange": "2026-11-08T09:25:42Z",
     "removed": false
   },
   "6495e9b304f9433aeef7cec1": {
