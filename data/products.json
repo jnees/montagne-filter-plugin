@@ -66,9 +66,9 @@
     "name": "VANILLE FRAICHE INSPIRED BY PARFUMS DE MARLY LAYTON",
     "url": "https://www.montagneparfums.com/fragrance/vanille-fraiche",
     "price": 40.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-23T21:02:00Z",
+    "lastChange": "2026-11-11T21:25:51Z",
     "removed": false
   },
   "5d256e4fe6fbfb0001fa4d28": {
