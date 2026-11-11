@@ -768,9 +768,9 @@
     "name": "EAU MATCHA INSPIRED BY LE LABO THE MATCHA 26",
     "url": "https://www.montagneparfums.com/fragrance/eau-matcha",
     "price": 40.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-05T10:26:35Z",
+    "lastChange": "2026-11-11T22:25:53Z",
     "removed": false
   },
   "640268d8fade8f7413d7edaa": {
