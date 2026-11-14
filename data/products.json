@@ -84,9 +84,9 @@
     "name": "PINEAPPLE BONBON INSPIRED BY BR 540 AND CREED AVENTUS",
     "url": "https://www.montagneparfums.com/fragrance/pineapplebonbon",
     "price": 40.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-14T04:26:20Z",
+    "lastChange": "2026-11-14T17:26:12Z",
     "removed": false
   },
   "5d8562ebe7a895378260f972": {
@@ -759,9 +759,9 @@
     "name": "EAU GAIAC INSPIRED BY LE LABO GAIAC 10 TOKYO CITY",
     "url": "https://www.montagneparfums.com/fragrance/eau-gaiac",
     "price": 50.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-14T14:25:48Z",
+    "lastChange": "2026-11-14T17:26:12Z",
     "removed": false
   },
   "63a8a7868101d462b0bf0825": {
