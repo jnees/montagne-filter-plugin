@@ -759,9 +759,9 @@
     "name": "EAU GAIAC INSPIRED BY LE LABO GAIAC 10 TOKYO CITY",
     "url": "https://www.montagneparfums.com/fragrance/eau-gaiac",
     "price": 50.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-13T22:00:00Z",
+    "lastChange": "2026-11-14T14:25:48Z",
     "removed": false
   },
   "63a8a7868101d462b0bf0825": {
