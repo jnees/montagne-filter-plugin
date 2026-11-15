@@ -696,9 +696,9 @@
     "name": "LYRA INSPIRED BY XERJOFF CASAMORATI LIRA",
     "url": "https://www.montagneparfums.com/fragrance/lyra",
     "price": 40.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-22T03:44:51Z",
+    "lastChange": "2026-11-15T11:26:08Z",
     "removed": false
   },
   "637fd2f74fb1dc6573506f26": {
