@@ -822,9 +822,9 @@
     "name": "AFTERNOON DIVE INSPIRED BY LOUIS VUITTON AFTERNOON SWIM",
     "url": "https://www.montagneparfums.com/fragrance/afternoon-dive",
     "price": 45.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-15T04:27:22Z",
+    "lastChange": "2026-11-15T05:26:13Z",
     "removed": false
   },
   "641cae45c9f75278ace8831d": {
