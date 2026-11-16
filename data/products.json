@@ -714,9 +714,9 @@
     "name": "STALLION EXCLUSIF INSPIRED BY PARFUMS DE MARLY PEGASUS EXCLUSIF",
     "url": "https://www.montagneparfums.com/fragrance/stallion-exclusif",
     "price": 45.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-22T03:44:51Z",
+    "lastChange": "2026-11-16T07:40:07Z",
     "removed": false
   },
   "637fd497d8416f0f2a81ce56": {
