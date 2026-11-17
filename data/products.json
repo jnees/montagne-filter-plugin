@@ -642,9 +642,9 @@
     "name": "AOUD BOUQUET INSPIRED BY LANCOME OUD BOUQUET",
     "url": "https://www.montagneparfums.com/fragrance/aoud-bouquet",
     "price": 40.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-22T03:44:51Z",
+    "lastChange": "2026-11-17T16:27:41Z",
     "removed": false
   },
   "6307cf76100c4a40f45e99dd": {
@@ -1047,9 +1047,9 @@
     "name": "CASHMERE ROSE INSPIRED BY CREED CARMINA",
     "url": "https://www.montagneparfums.com/fragrance/cashmere-rose-inspired-by-creed-carmina",
     "price": 45.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-22T03:44:51Z",
+    "lastChange": "2026-11-17T16:27:41Z",
     "removed": false
   },
   "655f8fbf30827b393c255c50": {
