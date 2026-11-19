@@ -687,9 +687,9 @@
     "name": "TABAC VANILLE INSPIRED BY TOM FORD TOBACCO VANILLE",
     "url": "https://www.montagneparfums.com/fragrance/tabac-vanille",
     "price": 40.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-06T21:58:00Z",
+    "lastChange": "2026-11-19T23:25:56Z",
     "removed": false
   },
   "637fd1afd0766a2feb149b60": {
