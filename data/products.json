@@ -84,9 +84,9 @@
     "name": "PINEAPPLE BONBON INSPIRED BY BR 540 AND CREED AVENTUS",
     "url": "https://www.montagneparfums.com/fragrance/pineapplebonbon",
     "price": 40.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-14T21:26:16Z",
+    "lastChange": "2026-11-20T21:26:24Z",
     "removed": false
   },
   "5d8562ebe7a895378260f972": {
@@ -408,9 +408,9 @@
     "name": "COGNAC D'ANGE INSPIRED BY KILIAN ANGEL'S SHARE",
     "url": "https://www.montagneparfums.com/fragrance/cognacangel",
     "price": 40.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-20T17:25:58Z",
+    "lastChange": "2026-11-20T21:26:24Z",
     "removed": false
   },
   "6016738ff444774bdfc7bc41": {
