@@ -129,18 +129,18 @@
     "name": "MAISON DU SOIR INSPIRED BY MAISON MARGIELA BY THE FIREPLACE",
     "url": "https://www.montagneparfums.com/fragrance/maisondusoir",
     "price": 40.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-05T15:26:03Z",
+    "lastChange": "2026-11-20T21:58:00Z",
     "removed": false
   },
   "5d9a8c17ce76032d73f21ee2": {
     "name": "BROOKLYN JAZZ INSPIRED BY MAISON MARGIELA JAZZ CLUB",
     "url": "https://www.montagneparfums.com/fragrance/brooklynjazz",
     "price": 40.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-02T03:29:07Z",
+    "lastChange": "2026-11-20T21:58:00Z",
     "removed": false
   },
   "5dc91eb8d343d40fa4524341": {
@@ -165,9 +165,9 @@
     "name": "MYSTIC OUD INSPIRED BY INITIO OUD FOR GREATNESS",
     "url": "https://www.montagneparfums.com/fragrance/mysticoud",
     "price": 45.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-29T03:31:10Z",
+    "lastChange": "2026-11-20T21:58:00Z",
     "removed": false
   },
   "5e006b0746c0db2bcd97cfe0": {
@@ -192,18 +192,18 @@
     "name": "ARCTIC PALACE INSPIRED BY MEMO WINTER PALACE",
     "url": "https://www.montagneparfums.com/fragrance/arcticpalace",
     "price": 40.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-15T21:26:26Z",
+    "lastChange": "2026-11-20T21:58:00Z",
     "removed": false
   },
   "5e33d498e051ef5d56723831": {
     "name": "PINK ROSE INSPIRED BY PARFUMS DE MARLY DELINA",
     "url": "https://www.montagneparfums.com/fragrance/pinkrose",
     "price": 40.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-06T22:05:00Z",
+    "lastChange": "2026-11-20T21:58:00Z",
     "removed": false
   },
   "5e758c91435a8c5222e9e087": {
@@ -318,9 +318,9 @@
     "name": "PHANTOM NOIR INSPIRED BY KILIAN BLACK PHANTOM",
     "url": "https://www.montagneparfums.com/fragrance/phantomnoir",
     "price": 40.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-13T23:26:13Z",
+    "lastChange": "2026-11-20T21:58:00Z",
     "removed": false
   },
   "5f8224166902e96ff684b995": {
@@ -687,9 +687,9 @@
     "name": "TABAC VANILLE INSPIRED BY TOM FORD TOBACCO VANILLE",
     "url": "https://www.montagneparfums.com/fragrance/tabac-vanille",
     "price": 40.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-19T23:25:56Z",
+    "lastChange": "2026-11-20T21:58:00Z",
     "removed": false
   },
   "637fd1afd0766a2feb149b60": {
@@ -876,18 +876,18 @@
     "name": "EAU VANILLE INSPIRED BY LE LABO 44 VANILLE PARIS CITY",
     "url": "https://www.montagneparfums.com/fragrance/eau-vanille",
     "price": 40.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-23T02:41:29Z",
+    "lastChange": "2026-11-20T21:59:00Z",
     "removed": false
   },
   "6442f21e066bc57db583155c": {
     "name": "CARNAL GRAY EXTRAIT INSPIRED BY BDK PARFUMS GRIS CHARNEL EXTRAIT",
     "url": "https://www.montagneparfums.com/fragrance/carnal-gray-extrait",
     "price": 45.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-10T04:26:24Z",
+    "lastChange": "2026-11-20T21:58:00Z",
     "removed": false
   },
   "6465ba1b5a521e20c0af66a8": {
@@ -1029,9 +1029,9 @@
     "name": "OMBRE NOIR INSPIRED BY LOUIS VUITTON OMBRE NOMADE",
     "url": "https://www.montagneparfums.com/fragrance/ombre-noir",
     "price": 60.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-22T03:44:51Z",
+    "lastChange": "2026-11-20T21:59:00Z",
     "removed": false
   },
   "655f8d28337af458e132ffaf": {
@@ -1074,18 +1074,18 @@
     "name": "AMBRE VANILLE INSPIRED BY PARFUMS DE MARLY ALTHA\u00cfR",
     "url": "https://www.montagneparfums.com/fragrance/ambre-vanille-inspired-by-parfums-de-marly-althar",
     "price": 45.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-09T02:28:10Z",
+    "lastChange": "2026-11-20T21:59:00Z",
     "removed": false
   },
   "65aae2104ee76a4e35e510f9": {
     "name": "CHILLY PACIFIC INSPIRED BY LOUIS VUITTON PACIFIC CHILL",
     "url": "https://www.montagneparfums.com/fragrance/louisvuittonpacificchill",
     "price": 45.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-14T20:26:18Z",
+    "lastChange": "2026-11-20T21:59:00Z",
     "removed": false
   },
   "65eb77cefae6634c27ba65b6": {
@@ -1173,9 +1173,9 @@
     "name": "GENTLE SILVER INSPIRED BY MFK GENTLE FLUIDITY SILVER",
     "url": "https://www.montagneparfums.com/fragrance/gentle-silver-inspired-by-mfk-gentle-fluidity-silver",
     "price": 45.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-19T19:26:11Z",
+    "lastChange": "2026-11-20T21:59:00Z",
     "removed": false
   },
   "66c8bcdfc83048496717cde6": {
@@ -1281,18 +1281,18 @@
     "name": "WAJAN INSPIRED BY PARFUMS DE MARLY OAJAN",
     "url": "https://www.montagneparfums.com/fragrance/wajan-inspired-by-parfums-de-marly-oajan",
     "price": 45.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-18T00:44:41Z",
+    "lastChange": "2026-11-20T21:59:00Z",
     "removed": false
   },
   "6748b5d7985e412c3947bb15": {
     "name": "LUVRS INSPIRED BY LOUIS VUITTON LOVERS",
     "url": "https://www.montagneparfums.com/fragrance/luvrs-inspired-by-louis-vuitton-lovers",
     "price": 45.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-06T22:01:00Z",
+    "lastChange": "2026-11-20T22:00:00Z",
     "removed": false
   },
   "6748b701b9528f56d3e2bfe5": {
@@ -1353,9 +1353,9 @@
     "name": "MANGO SKYN INSPIRED BY VILHELM PARFUMERIE MANGO SKIN",
     "url": "https://www.montagneparfums.com/fragrance/mango-skyn-inspired-by-vilhelm-parfumerie-mango-skin",
     "price": 45.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-22T03:44:51Z",
+    "lastChange": "2026-11-20T21:59:00Z",
     "removed": false
   },
   "684c8bfa64f4dd59c05c5898": {
@@ -1398,9 +1398,9 @@
     "name": "DREAM CATCHER INSPIRED BY LOUIS VUITTON ATTRAPE-R\u00caVES",
     "url": "https://www.montagneparfums.com/fragrance/dream-catcher-inspired-by-louis-vuitton-attrape-rves",
     "price": 45.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-29T17:26:55Z",
+    "lastChange": "2026-11-20T22:00:00Z",
     "removed": false
   },
   "6896579c2352f55305f7ea4a": {
@@ -1425,9 +1425,9 @@
     "name": "FANTASTIC INSPIRED BY TOM FORD FUCKING FABULOUS",
     "url": "https://www.montagneparfums.com/fragrance/fantastic-inspired-by-tom-ford-fucking-fabulous",
     "price": 40.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-04T17:26:23Z",
+    "lastChange": "2026-11-20T22:00:00Z",
     "removed": false
   },
   "68f27fd937dfbf04349f76b7": {
@@ -1452,9 +1452,9 @@
     "name": "HERB GARDEN INSPIRED BY GUERLAIN HERBES TROUBLANTES",
     "url": "https://www.montagneparfums.com/fragrance/herb-garden-inspired-by-guerlain-herbes-troublantes",
     "price": 45.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-15T23:28:31Z",
+    "lastChange": "2026-11-20T22:00:00Z",
     "removed": false
   },
   "6927866044adae395c90e66f": {
@@ -1524,9 +1524,9 @@
     "name": "VANILLE SUPREME INSPIRED BY INDULT TIHOTA",
     "url": "https://www.montagneparfums.com/fragrance/inspired-by-indult-tihota",
     "price": 45.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-22T03:44:51Z",
+    "lastChange": "2026-11-20T22:00:00Z",
     "removed": false
   },
   "6a19e697089d1869aaa43b9a": {
