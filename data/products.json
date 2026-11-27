@@ -192,9 +192,9 @@
     "name": "ARCTIC PALACE INSPIRED BY MEMO WINTER PALACE",
     "url": "https://www.montagneparfums.com/fragrance/arcticpalace",
     "price": 40.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-20T21:58:00Z",
+    "lastChange": "2026-11-27T21:25:50Z",
     "removed": false
   },
   "5e33d498e051ef5d56723831": {
@@ -750,9 +750,9 @@
     "name": "PINEAPPLE MUSK INSPIRED BY CREED AVENTUS",
     "url": "https://www.montagneparfums.com/fragrance/pineapple-musk",
     "price": 60.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-27T17:26:12Z",
+    "lastChange": "2026-11-27T21:25:50Z",
     "removed": false
   },
   "63a8a6605264dd4330467286": {
@@ -1533,9 +1533,9 @@
     "name": "CRIMSON CROWN INSPIRED BY MIND GAMES J'ADOUBE",
     "url": "https://www.montagneparfums.com/fragrance/crimson-crown-inspired-by-mind-games-jadoube",
     "price": 45.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-30T21:00:00Z",
+    "lastChange": "2026-11-27T21:25:50Z",
     "removed": false
   },
   "6a19e862089d1869aaa43e06": {
