@@ -471,9 +471,9 @@
     "name": "BLEU OUD INSPIRED BY FRAGRANCE DU BOIS BLEU INTENSE",
     "url": "https://www.montagneparfums.com/fragrance/bleuoud",
     "price": 40.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-23T20:59:00Z",
+    "lastChange": "2026-11-27T18:28:47Z",
     "removed": false
   },
   "6072818c957bbe38450b4efa": {
