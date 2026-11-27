@@ -165,9 +165,9 @@
     "name": "MYSTIC OUD INSPIRED BY INITIO OUD FOR GREATNESS",
     "url": "https://www.montagneparfums.com/fragrance/mysticoud",
     "price": 45.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-20T21:58:00Z",
+    "lastChange": "2026-11-27T15:26:20Z",
     "removed": false
   },
   "5e006b0746c0db2bcd97cfe0": {
@@ -921,9 +921,9 @@
     "name": "TIGRIS COLOGNE INSPIRED BY BVLGARI TYGAR",
     "url": "https://www.montagneparfums.com/fragrance/tigris-cologne",
     "price": 45.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-08T09:25:42Z",
+    "lastChange": "2026-11-27T15:26:20Z",
     "removed": false
   },
   "6495e9b304f9433aeef7cec1": {
