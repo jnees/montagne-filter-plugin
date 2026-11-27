@@ -147,9 +147,9 @@
     "name": "AZONTO INSPIRED BY BYREDO BAL D'AFRIQUE",
     "url": "https://www.montagneparfums.com/fragrance/azonto",
     "price": 40.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-05T01:25:56Z",
+    "lastChange": "2026-11-27T03:29:34Z",
     "removed": false
   },
   "5ddc994844621d14e348295c": {
@@ -957,9 +957,9 @@
     "name": "IMMENSITY INSPIRED BY l'IMMENSITE BY LOUIS VUITTON",
     "url": "https://www.montagneparfums.com/fragrance/immensity-inspired-by-limmensite-by-louis-vuitton",
     "price": 45.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-27T00:44:48Z",
+    "lastChange": "2026-11-27T03:29:34Z",
     "removed": false
   },
   "64cd595c825b0778a4f12aea": {
@@ -1182,9 +1182,9 @@
     "name": "PACIFIC MOSS INSPIRED BY GOLDFIELD & BANKS PACIFIC ROCK MOSS",
     "url": "https://www.montagneparfums.com/fragrance/pacific-moss-inspired-by-goldfield-banks-pacific-rock-moss",
     "price": 40.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-23T21:00:00Z",
+    "lastChange": "2026-11-27T03:29:34Z",
     "removed": false
   },
   "66eddf377599897493e485f8": {
