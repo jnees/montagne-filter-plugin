@@ -399,9 +399,9 @@
     "name": "VANILLE ABSOLUTE INSPIRED BY NISHANE ANI",
     "url": "https://www.montagneparfums.com/fragrance/vanilleabsolute",
     "price": 40.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-27T00:44:48Z",
+    "lastChange": "2026-11-27T06:36:35Z",
     "removed": false
   },
   "601671084f4ce571ffd4cb7c": {
@@ -1110,9 +1110,9 @@
     "name": "PALISADE INSPIRED BY MIND GAMES BLOCKADE",
     "url": "https://www.montagneparfums.com/fragrance/palisade-inspired-by-mind-games-blockade",
     "price": 45.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-26T01:26:34Z",
+    "lastChange": "2026-11-27T06:36:35Z",
     "removed": false
   },
   "6635502661689a56db481742": {
@@ -1578,9 +1578,9 @@
     "name": "SPEED DEMONS INSPIRED BY EX NIHILO SPEED LEGENDS",
     "url": "https://www.montagneparfums.com/fragrance/speed-demons-inspired-by-ex-nihilo-speed-legends",
     "price": 45.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-27T05:27:57Z",
+    "lastChange": "2026-11-27T06:36:35Z",
     "removed": false
   },
   "6ab6db502efa7c342b31c826": {
@@ -1605,9 +1605,9 @@
     "name": "BLEU EXCLUSIF INSPIRED BY CHANEL BLEU DE CHANEL L'EXCLUSIF",
     "url": "https://www.montagneparfums.com/fragrance/bleu-exclusif-inspired-by-chanel-bleu-de-chanel-lexclusif",
     "price": 50.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-11-27T00:44:48Z",
-    "lastChange": "2026-11-27T05:27:57Z",
+    "lastChange": "2026-11-27T06:36:35Z",
     "removed": false
   },
   "6b08c17e028fae4bbc94e479": {
