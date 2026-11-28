@@ -219,9 +219,9 @@
     "name": "PINEAPPLE FRAIS INSPIRED BY CREED AVENTUS COLOGNE",
     "url": "https://www.montagneparfums.com/fragrance/pineapplefrais",
     "price": 40.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-28T00:42:22Z",
+    "lastChange": "2026-11-28T15:26:21Z",
     "removed": false
   },
   "5eb0c51874f3795bf901f84f": {
@@ -354,9 +354,9 @@
     "name": "SPIRIT OF PEACE INSPIRED BY BOND NO.9 ESSENCE OF PEACE",
     "url": "https://www.montagneparfums.com/fragrance/spirit-of-peace",
     "price": 40.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-10-22T03:44:51Z",
+    "lastChange": "2026-11-28T15:26:21Z",
     "removed": false
   },
   "5fbf28fff3de5e49b5572b8d": {
