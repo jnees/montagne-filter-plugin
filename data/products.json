@@ -147,9 +147,9 @@
     "name": "AZONTO INSPIRED BY BYREDO BAL D'AFRIQUE",
     "url": "https://www.montagneparfums.com/fragrance/azonto",
     "price": 40.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-28T00:42:22Z",
+    "lastChange": "2026-11-28T05:26:12Z",
     "removed": false
   },
   "5ddc994844621d14e348295c": {
@@ -723,9 +723,9 @@
     "name": "CIEL ELIXIR INSPIRED BY DIOR SAUVAGE ELIXIR",
     "url": "https://www.montagneparfums.com/fragrance/ciel-elixir",
     "price": 40.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-13T22:00:00Z",
+    "lastChange": "2026-11-28T05:26:12Z",
     "removed": false
   },
   "637fd54e4fb1dc657350707c": {
