@@ -39,9 +39,9 @@
     "name": "LE BONBON INSPIRED BY MFK BACCARAT ROUGE 540",
     "url": "https://www.montagneparfums.com/fragrance/le-bonbon-1",
     "price": 40.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-27T17:26:12Z",
+    "lastChange": "2026-11-28T09:26:15Z",
     "removed": false
   },
   "5d156a9ca50704000135822a": {
@@ -588,9 +588,9 @@
     "name": "LE BONBON INTENSE INSPIRED BY MFK BACCARAT ROUGE 540 EXTRAIT",
     "url": "https://www.montagneparfums.com/fragrance/le-bonbon-intense",
     "price": 45.0,
-    "soldOut": true,
+    "soldOut": false,
     "firstSeen": "2026-10-22T03:44:51Z",
-    "lastChange": "2026-11-27T10:26:29Z",
+    "lastChange": "2026-11-28T09:26:15Z",
     "removed": false
   },
   "622bebed90800846ca1881d6": {
@@ -1641,9 +1641,9 @@
     "name": "GIN SPARKLE INSPIRED BY M. MICALLEF GnTONIC",
     "url": "https://www.montagneparfums.com/fragrance/gin-sparkle-inspired-by-m-micallef-gntonic",
     "price": 45.0,
-    "soldOut": false,
+    "soldOut": true,
     "firstSeen": "2026-11-27T00:44:48Z",
-    "lastChange": "2026-11-27T00:44:48Z",
+    "lastChange": "2026-11-28T09:26:15Z",
     "removed": false
   }
 }
